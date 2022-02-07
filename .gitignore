@@ -1,0 +1,10 @@
+/icons
+/my-fav
+/pictures
+/wireframe (sketch ver.)
+
+backend/backend/my_settings.py
+backend/db.sqlite3
+
+DB.xlsx
+.DS_Store

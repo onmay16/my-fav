@@ -1,0 +1,90 @@
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+body {
+    font-family: 'Open Sans';
+}
+
+button {
+    height: 41px;
+    width: 150px;
+    border: 2px solid #AF0000;
+    border-radius: 10px;
+    background-color: white;
+    margin-left: 4px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+div{
+    -webkit-touch-callout: none; 
+    user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    -webkit-user-select: none;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 0.05fr 1fr;
+    padding-top: 65px;
+}
+
+.signup {
+    padding-left: 25px;
+    text-align: center;
+}
+
+.signup-text {
+    font-family: Chicle;
+    font-size: 64px;
+    padding-bottom: 50px;
+}
+
+.signup-components {
+    text-align: center;
+}
+
+.text-box {
+    padding-bottom: 10px;
+    display: inline-block;
+    height: fit-content;
+}
+
+.btns {
+    display: inline-block;
+    padding-top: 5px;
+}
+
+.google {
+    height: 18px;
+    width: 18px;
+    vertical-align: middle;
+}
+
+.signup-btn {
+    font-weight: 600;
+    font-size: 12px;
+    color: #952222;
+}
+
+.temp-img {
+    vertical-align: middle;
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+}
+
+.signin-btn {
+    width: 100px;
+    height: 50px;
+    margin-top: 28px;
+    margin-right: 25px;
+    border: 3px solid #AF0000;
+    border-radius: 50px;
+    font-family: Chicle;
+    font-size: 23px;
+    color: #952222;
+}

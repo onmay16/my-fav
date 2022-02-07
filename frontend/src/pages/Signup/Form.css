@@ -1,0 +1,18 @@
+form {
+    width:fit-content;
+}
+
+label {
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: small;
+    float: left;
+    padding-bottom: 2px;
+}
+
+input {
+    border: 2px solid #ADADAD;
+    border-radius: 10px;
+    width: 300px;
+    height: 35px;
+}
