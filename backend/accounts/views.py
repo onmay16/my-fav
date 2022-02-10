@@ -12,13 +12,14 @@ from playlist.serializers import PlaylistSerializer
 
 from rest_framework.parsers import JSONParser
 from rest_framework.authtoken.models import Token
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import permission_classes
 
 # Create your views here.
 
 @csrf_exempt
 def signup(request):
+
     if request.method == 'POST':
         data = JSONParser().parse(request)
         email = data['email']
@@ -38,9 +39,12 @@ def signup(request):
         user.save()
         profile.save()
         token = user.auth_token.key
+        nickname = profile.nickname
         
-        return JsonResponse({'Token': token, 'message':'Welcome! 🥳'}, status=200)
+        return JsonResponse({'Token': token, 'message':('Welcome! 🥳 ' + nickname)}, status=200)
 
+@csrf_exempt
+# @permission_classes([AllowAny])
 def signin(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
@@ -61,7 +65,7 @@ def signin(request):
             else:
                 return JsonResponse({'message':'User is not active'})
         else:
-            return JsonResponse({'message':'User does not exist'}, status=401)
+            return JsonResponse({'message':'User does not exist'})
 
 @permission_classes([IsAuthenticated])
 def signout(request):
