@@ -176,3 +176,6 @@ LOGIN_REDIRECTION_URL = '/' # should modify later
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
 CSRF_COOKIE_SECURE = True
+
+# Youtube API
+YOUTUBE_API_KEY = my_settings.YOUTUBE_API_KEY
