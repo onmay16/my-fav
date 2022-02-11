@@ -2,6 +2,7 @@
 /my-fav
 /pictures
 /wireframe (sketch ver.)
+/sample-data
 
 backend/backend/my_settings.py
 backend/db.sqlite3
