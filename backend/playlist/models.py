@@ -25,9 +25,9 @@ class Song(models.Model):
     # id = models.AutoField(verbose_name='Song id', primary_key=True, unique=True)
     title = models.CharField(verbose_name='Song title', max_length=255)
     artist = models.CharField(verbose_name='Artist', max_length=255)
-    deate_released = models.DateField(verbose_name='Date released', blank=True, null=True)
-    length = models.DurationField(verbose_name='Song duration')
-    album_title = models.CharField(verbose_name='Album title', max_length=255, blank=True, null=True)
+    # deate_released = models.DateField(verbose_name='Date released', blank=True, null=True)
+    # length = models.DurationField(verbose_name='Song duration')
+    # album_title = models.CharField(verbose_name='Album title', max_length=255, blank=True, null=True)
     playlist = models.ManyToManyField(Playlist)
 
     class Meta:
