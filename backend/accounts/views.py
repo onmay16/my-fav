@@ -1,21 +1,19 @@
 import re
-import json
 from random import randint
 
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
-from django.test import tag
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Follow, User, Profile
 from .serializers import ProfileSerializer, UserSerializer
 
-from playlist.models import Playlist, Song, Tag
+from playlist.models import Playlist, Song, Genre
 from playlist.serializers import PlaylistSerializer
 
 from rest_framework.parsers import JSONParser
 from rest_framework.authtoken.models import Token
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import permission_classes
 
 # Create your views here.
@@ -90,20 +88,6 @@ def mainpage(request):
         random_idx = randint(start, total)
         return random_idx
     
-    def tag_dic(tag_lst, dic={}):
-        for tag in tag_lst:
-            if tag.tag in dic:
-                dic[tag.tag] =+ 1
-            else:
-                dic[tag.tag] = 1
-        return dic
-
-    def tag_lst(songs, lst=[]):
-        for song in songs:
-            tags = Tag.objects.select_related().filter(song=song)
-            lst.extend(tags)
-        return lst
-    
     def song_list(playlists, lst=[]):
         for playlist in playlists:
             songs = Song.objects.select_related().filter(playlist=playlist)
@@ -126,22 +110,21 @@ def mainpage(request):
         first_user = User.objects.get(id=first_user_idx)
         first_profile = Profile.objects.get(user=first_user)
         first_playlists = Playlist.objects.filter(created_by=first_user)
-        first_tags = tag_dic(tag_lst(song_list(first_playlists)))
+        first_songs = song_list(first_playlists)
 
         second_user = User.objects.get(id=second_user_idx)
         second_profile = Profile.objects.get(user=second_user)
         second_playlists = Playlist.objects.filter(created_by=second_user)
-        second_tags = tag_dic(tag_lst(song_list(second_playlists)))
 
-        # tag recommendation section
-        first_tag_idx = get_random_idx(Tag, 1)
-        second_tag_idx = get_random_idx(Tag, 1)
+        # genre recommendation section
+        first_genre_idx = get_random_idx(Genre, 1)
+        second_genre_idx = get_random_idx(Genre, 1)
 
-        while ((first_tag_idx == second_tag_idx)):
-            second_tag_idx = get_random_idx(Tag, 1)
+        while ((first_genre_idx == second_genre_idx)):
+            second_genre_idx = get_random_idx(Genre, 1)
         
-        first_tag = Tag.objects.get(id=first_tag_idx)
-        second_tag = Tag.objects.get(id=second_tag_idx)
+        first_genre = Genre.objects.get(id=first_genre_idx)
+        first_genre= Genre.objects.get(id=second_genre_idx)
         
         # Playlist recommendation section
         first_playlist_idx = get_random_idx(Playlist, 1)
@@ -156,12 +139,10 @@ def mainpage(request):
         return JsonResponse({
             'First user': UserSerializer(first_user).data,
             'First user\'s profile': ProfileSerializer(first_profile).data,
-            'First user\'s tags': json.dumps(first_tags),
             'Second user': UserSerializer(second_user).data,
             'Second user\'s profile': ProfileSerializer(second_profile).data,
-            'Second user\'s tags': json.dumps(second_tags),
-            'First tag': first_tag.tag,
-            'Second tag': second_tag.tag,
+            'First genre': first_genre.genre,
+            'Second genre': first_genre.genre,
             'First_playlist': PlaylistSerializer(first_playlist).data,
             'Second_playlist': PlaylistSerializer(second_playlist).data
         })
