@@ -178,4 +178,5 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
 CSRF_COOKIE_SECURE = True
 
 # Youtube API
-YOUTUBE_API_KEY = my_settings.YOUTUBE_API_KEY
+# YOUTUBE_API_KEY = my_settings.YOUTUBE_API_KEY
+LASTFM_API_KEY = my_settings.LASTFM_API_KEY
