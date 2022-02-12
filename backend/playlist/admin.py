@@ -10,11 +10,11 @@ class PlaylistAdmin(admin.ModelAdmin):
     search_fields = ('created_by', )
     ordering = ('-created_at',)
 
-# class SongAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'title', 'artist', 'date_released', 'length', 'album')
-#     list_filter = ('title', 'artist', 'album')
-#     search_fields = ('title', 'artist')
-#     ordering = ('title', 'artist', '-date_released')
+class SongAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'artist', )
+    list_filter = ('title', 'artist', )
+    search_fields = ('title', 'artist')
+    ordering = ('title', 'artist', )
 
 class TagAdmin(admin.ModelAdmin):
     list_display = ('tag',)
@@ -28,7 +28,7 @@ class GenreAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Playlist, PlaylistAdmin)
-# admin.site.register(Song, SongAdmin)
+admin.site.register(Song, SongAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Genre, GenreAdmin)
 
