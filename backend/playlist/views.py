@@ -39,9 +39,11 @@ def search_artist(request, artist):
 def search_track(request, track):
 
     url = api_url+'?method=track.search&format=json&track='+track+'&api_key='+api_key
+    
     result_data = requests.get(url).text
     fine_data = json.loads(result_data)
     track_data = fine_data['results']['trackmatches']['track']
+
     tracks = {}
     for track in track_data:
         name = track['name']
@@ -52,7 +54,29 @@ def search_track(request, track):
 
     return JsonResponse({'tracks': tracks})
 
-def getInfo_track(request, mbid, artist='', track=''):
+def getInfo_track(request, artist, track):
     
-    search_info = {}
+    url = api_url + '?method=track.getInfo&format=json&track='+track+'&artist='+artist+'&api_key='+api_key
+    
+    result_data = requests.get(url).text
+    fine_data = json.loads(result_data)
+    info_data = fine_data['track']
+
+    info = {
+        'name':info_data['name'], 
+        'url':info_data['url'],
+        'artist':info_data['artist']['name'],
+        'artist_url':info_data['artist']['url'],
+        'tags':[]
+        }
+    
+    for tag in info_data['toptags']['tag']:
+        info['tags'].append(tag['name'])
+    
+    return JsonResponse({'info': info})
+    # return JsonResponse({'data': info_data})
+    
+    
+    
+    
     
