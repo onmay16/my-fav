@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { CloseButton } from '@chakra-ui/react'
+
 import Form from '../Form/Form';
 
 import google from '../../svg/google.svg'
+import close from '../../svg/gg_close.svg'
 
 import './Signin.css'
 
@@ -14,6 +17,10 @@ function Signin(props) {
     const [password, setPassword] = useState('')
 
     console.log('singin page val:', props.modalOpen)
+
+    const closeModal = () => {
+        props.closeModal(false)
+    }
 
     const emailHandler = (event) => {
         setEmail(event.target.value);
@@ -53,6 +60,9 @@ function Signin(props) {
     return (
         <div className={props.modalOpen? 'open-container':'close-container'}>
             <div className='modal'>
+                <img className='close-btn' src={close} onClick={closeModal} />
+                <br />
+                <br />
                 <div className='input-box'><Form text={text[0]} type='email' value={email} onChange={emailHandler} /></div>
                 <div className='input-box'><Form text={text[1]} type='password' value={password} onChange={passwordHandler} /></div>
                 <div className='btns'>
