@@ -84,14 +84,16 @@ function Signup() {
     // }
 
     return (
-        <div onClick={signInModalOn ? signInClickHandler:null}>
+        // onClick={signInModalOn ? signInClickHandler:null}
+        <div>
+            <Signin modalOpen={signInModalOn} closeModal={setSignInModalOn}/>
             <header>
                 <LogoRed />
                 <button className='signin-btn' onClick={signInClickHandler}>sign in</button>
-                <Signin modalOpen={signInModalOn} />
             </header>
             <body>
                 <div className='wrapper'>
+                    <div></div>
                     <div className='signup'>
                         <div className='signup-text'>Share your mood.</div>
                         <div className='signup-components'>
@@ -109,6 +111,7 @@ function Signup() {
                     <div className='img-area'>
                         <img className='temp-img' src={tempimg} />
                     </div>
+                    <div></div>
                 </div>
             </body>
         </div>
