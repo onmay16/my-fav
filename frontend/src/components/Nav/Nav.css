@@ -1,0 +1,48 @@
+.nav-bar {
+    background-color: #8C0000;
+    width: 90px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.logo-white {
+    font-family: Chicle;
+    font-size: 42px;
+    color: white;
+    padding-top: 15px;
+    text-shadow: 2px 2px 3px #640000;
+    display: flexbox;
+    cursor: pointer;
+}
+
+.icons {
+    display: flexbox;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.icon-chart {
+    width: 37px;
+    height: 37px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.icon-settings {
+    width: 37px;
+    height: 37px;
+    display: inline-block;
+    padding-top: 12px;
+    cursor: pointer;
+}
+
+.signout {
+    width: 37px;
+    height: 37px;
+    display: inline-block;
+    padding-top: 14px;
+    cursor: pointer;
+}
