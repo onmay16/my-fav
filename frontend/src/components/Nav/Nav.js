@@ -15,7 +15,7 @@ function Nav() {
     }
 
     return (
-        <div className='nav-bar'>
+        <nav className='nav-bar'>
             <div className='logo-white' onClick={handleClick('/main')}> 
             {/* should change route depending signin status */}
                 MY
@@ -30,7 +30,7 @@ function Nav() {
                 <img className='signout' src={signout} onClick={handleClick('/splash')} /> 
                 {/* add logout action */}
             </div>
-        </div>
+        </nav>
     )
 }
 
