@@ -23,11 +23,8 @@ function Signup() {
 
     const [signInModalOn, setSignInModalOn] = useState(false);
 
-    console.log('signup page val:', signInModalOn)
-
     const signInClickHandler = () => {
         setSignInModalOn(!signInModalOn);
-        console.log('signup page val:', signInModalOn);
     }
 
     const emailHandler = (event) => {
