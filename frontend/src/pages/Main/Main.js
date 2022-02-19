@@ -7,15 +7,29 @@ import Nav from '../../components/Nav/Nav';
 import message from '../../svg/message.svg'
 import notification from '../../svg/notification.svg'
 import profile from '../../svg/profile.svg'
+import axios from 'axios';
 
-function Main() {
-
-    const [user, userChange] = useState('')
+function Main(props) {
     
+    console.log(props.user)
+
+    console.log('result');
+
+    axios
+        .get("http://localhost:8000/accounts/user/")
+        .then((response) => {
+            
+            console.log(response.data);
+        })
+
+
+    // const [user, userChange] = useState(props.user)
+    // const [nickname, nicknameChange] = useState(user[0])
+
     return (
         <div className='main'>
             <Nav className='nav' />
-            <div className='wrapper'>
+            <div className='main-wrapper'>
                 <div className='header'>
                     <div className='search-box'>
                         <div className='search-filter'></div>
@@ -41,8 +55,8 @@ function Main() {
                         <div className='second-column'>
                             <div className='playlist-recommendation'></div>
                         </div>
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
