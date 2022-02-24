@@ -95,9 +95,13 @@ function Signup() {
                         <div className='signup-text'>Share your mood.</div>
                         <div className='signup-components'>
                             <div className='text-box'><Form text={text[0]} type='text' value={nickname} onChange={nicknameHandler} /></div>
+                            <br />
                             <div className='text-box'><Form text={text[1]} type='email' value={email} onChange={emailHandler} /></div>
+                            <br />
                             <div className='text-box'><Form text={text[2]} type='password' value={password} onChange={passwordHandler} /></div>
+                            <br />
                             <div className='text-box'><Form text={text[3]} type='password' value={password2} onChange={password2Handler} /></div>
+                            <br />
                             <div className='btns'>
                                 <button className='signup-btn' type='submit' onClick={onClick}>SIGN UP</button>
                                 <button><img className='google' src={google} /></button>
