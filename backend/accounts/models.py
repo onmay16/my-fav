@@ -90,8 +90,8 @@ class Profile(models.Model):
     nickname = models.CharField(verbose_name='Nickname', max_length=20, unique=True)
     profile_pic = models.ImageField(verbose_name='Profile Picture', upload_to='profiles/', blank=True, null=True)
     updated_at = models.DateTimeField(verbose_name='Updated at', auto_now=True)
-    bio = models.TextField(verbose_name='Bio')
-    insta_url = models.URLField(verbose_name='Instagram url')
+    bio = models.TextField(verbose_name='Bio', null=True, blank=True)
+    insta_url = models.URLField(verbose_name='Instagram url', null=True, blank=True)
     slug = models.SlugField(max_length=20, blank=True, null=True)
 
     class Meta:
