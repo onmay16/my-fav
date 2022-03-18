@@ -21,7 +21,7 @@
     padding-top: 15px;
     text-shadow: 2px 2px 3px #640000;
     display: flexbox;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .icons {

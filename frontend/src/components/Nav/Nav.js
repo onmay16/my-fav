@@ -10,24 +10,34 @@ import signout from '../../svg/signout.svg'
 function Nav() {
 
     let navigate = useNavigate();
-    function handleClick(url) {
-        navigate(url)
+    
+    const toMain = () => {
+        navigate('/main')
+    }
+    const toReport = () => {
+        navigate('/report')
+    }
+    const toSettings = () => {
+        navigate('/settings')
+    }
+    const toSplash = () => {
+        navigate('/splash')
     }
 
     return (
         <nav className='nav-bar'>
-            <div className='logo-white' onClick={handleClick('/main')}> 
+            <div className='logo-white' onClick={toMain}> 
             {/* should change route depending signin status */}
                 MY
                 <br />
                 FAV
             </div>
             <div className='icons'>
-                <img className='icon-chart' src={chart} onClick={handleClick('/report')} />
+                <img className='icon-chart' src={chart} onClick={toReport} />
                 <br />
-                <img className='icon-settings' src={settings} onClick={handleClick('/settings')} />
+                <img className='icon-settings' src={settings} onClick={toSettings} />
                 <br />
-                <img className='signout' src={signout} onClick={handleClick('/splash')} /> 
+                <img className='signout' src={signout} onClick={toSplash} /> 
                 {/* add logout action */}
             </div>
         </nav>

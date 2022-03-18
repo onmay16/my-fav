@@ -15,8 +15,7 @@ function Signin(props) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    console.log('singin page val:', props.modalOpen)
+    const [error, setError] = useState('')
 
     const closeModal = () => {
         props.closeModal(false)
@@ -33,6 +32,12 @@ function Signin(props) {
     const onClick = (event) => {
         event.preventDefault();
 
+        if (email === "" || password === "") {
+            setError("Fields are required")
+            return;
+        }
+
+
         axios
             .post("http://localhost:8000/accounts/signin/", {
                 "email": email,
@@ -40,17 +45,22 @@ function Signin(props) {
             })
             .then((response) => {
                 console.log(response.data);
-                var m = (response.data.message);
-                if (m === 'User is not active') {
+                var d = (response.data);
+                var s = (response.status);
+                if (s === 200) {
+                    localStorage.clear()
+                    localStorage.setItem('token', d.Token)
+                    // console.log(localStorage)
+                    // console.log('Success')
+                }
+                if (d.message === 'User is not active') {
                     alert('User is not active')
                 }
-                if (m === 'User does not exist') {
+                if (d.message === 'User does not exist') {
                     alert('User does not exist')
                 }
             })
-            .catch((response) => {
-                console.log(response.data);
-            })
+
         setEmail('');
         setPassword('');
         // modalClose();
