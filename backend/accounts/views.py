@@ -3,7 +3,7 @@ import json
 
 from random import randint
 
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
@@ -23,7 +23,6 @@ from rest_framework.decorators import permission_classes
 
 @csrf_exempt
 def signup(request):
-
     if request.method == 'POST':
         data = JSONParser().parse(request)
         email = data['email']
@@ -32,18 +31,22 @@ def signup(request):
             return JsonResponse({'message': 'Please enter valid email address.'})
 
         if User.objects.filter(email=email).exists():
-            return JsonResponse({'message': 'User already exist.'})
+            return JsonResponse({'message': 'This mail address has been taken.'})
         
         if data['password1'] != data['password2']:
             return JsonResponse({'message': 'Passwords do not match.'})
 
         user = User.objects.create_user(email=data['email'], password=data['password1'])
-        profile = Profile(user=user, nickname=data['nickname'])
-
+        try:
+            profile = Profile(user=user, nickname=data['nickname'])
+        except:
+            profile = Profile(user=user, nickname=f'user{user.id}')
+        
         user.save()
         profile.save()
         token = user.auth_token.key
         nickname = profile.nickname
+        login(request, user)
         
         return JsonResponse({'Token': token, 'message':('Welcome! 🥳 ' + nickname)}, status=200)
 
@@ -52,24 +55,25 @@ def signup(request):
 def signin(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
-        user = authenticate(email=data['email'], password=data['password'])
-
-        if user:
-            if user.is_active:
-                login(request, user)
-                token = Token.objects.get_or_create(user=user)[0].key
-                profile = Profile.objects.get(user=user)
-                nickname = profile.nickname
-
-                return JsonResponse({
-                    'Token': token,
-                    'User': UserSerializer(user).data, 
-                    'message':('Welcome back, '+ nickname +'!')}, 
-                    status=200)
-            else:
-                return JsonResponse({'message':'User is not active'})
-        else:
+        # user = authenticate(email=data['email'], password=data['password'])
+        try:
+            user = User.objects.get(email=data['email'])
+        except:
             return JsonResponse({'message':'User does not exist'})
+
+        if user.is_active:
+            login(request, user)
+            token = Token.objects.get_or_create(user=user)[0].key
+            profile = Profile.objects.get(user=user)
+            nickname = profile.nickname
+
+            return JsonResponse({
+                'Token': token,
+                'User': UserSerializer(user).data, 
+                'message':('Welcome back, '+ nickname +'!')}, 
+                status=200)
+        else:
+            return JsonResponse({'message':'User is not active'})
 
 @permission_classes([IsAuthenticated])
 def signout(request):
@@ -99,13 +103,11 @@ def user_get_test(request):
     return JsonResponse({'user':UserSerializer(user).data, 'profile':ProfileSerializer(profile).data})
 
 @permission_classes([IsAuthenticated])
-def profile(request, nickname):
-
-    profile = Profile.objects.get(nickname=nickname)
-    user = profile.user
+def profile(request):
+    user = request.user
+    profile = Profile.objects.get(user=user)
 
     if request.method == 'GET':
-
         playlists = Playlist.objects.select_related().filter(created_by=user.id)
         following = Follow.objects.select_related().filter(follower=user).count()
         follower = Follow.objects.select_related().filter(following=user).count()
