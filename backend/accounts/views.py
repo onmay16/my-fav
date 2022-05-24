@@ -1,25 +1,19 @@
 import re
-import json
 
-from random import randint
-
-from django.http import HttpResponse, JsonResponse
-from django.contrib.auth import authenticate, login, logout
+from django.http import JsonResponse
+from django.contrib.auth import login, logout
 from django.views.decorators.csrf import csrf_exempt
-from django.core import serializers
 
 from .models import Follow, User, Profile
 from .serializers import ProfileSerializer, UserSerializer
 
-from playlist.models import Playlist, Song, Genre
+from playlist.models import Playlist
 from playlist.serializers import PlaylistSerializer
 
 from rest_framework.parsers import JSONParser
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import permission_classes
-
-# Create your views here.
 
 @csrf_exempt
 def signup(request):
@@ -51,7 +45,6 @@ def signup(request):
         return JsonResponse({'Token': token, 'message':('Welcome! 🥳 ' + nickname)}, status=200)
 
 @csrf_exempt
-# @permission_classes([AllowAny])
 def signin(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
@@ -86,28 +79,17 @@ def signout(request):
 
         return JsonResponse({'message':('See you Soon, ' + nickname)}, status=200)
 
-# @permission_classes([IsAuthenticated])
 @csrf_exempt
-def user_get_test(request):
-    if request.method == 'POST':
-
-        token = JSONParser().parse(request)['token']
-
-        user = User.objects.get(auth_token=token)
-        # profile = Profile.objects.all()
-        profile = Profile.objects.select_related().get(user=request.user)
-        # data = serializers.serialize('json', profile)
-        print()
-
-    # return JsonResponse({'data': data})
-    return JsonResponse({'user':UserSerializer(user).data, 'profile':ProfileSerializer(profile).data})
-
 @permission_classes([IsAuthenticated])
-def profile(request):
+def profile(request, nickname):
     user = request.user
-    profile = Profile.objects.get(user=user)
+    try:
+        profile = Profile.objects.get(nickname=nickname)
+    except:
+        return JsonResponse({'message':'User does not exist.'})
 
     if request.method == 'GET':
+
         playlists = Playlist.objects.select_related().filter(created_by=user.id)
         following = Follow.objects.select_related().filter(follower=user).count()
         follower = Follow.objects.select_related().filter(following=user).count()
@@ -122,14 +104,10 @@ def profile(request):
             status=200)
 
     if request.method == 'POST':
-        
-        # response = HttpResponse()
-        # csrftoken = csrf.get_token(request)
-        # print('csrf:' + csrftoken)
-
         data = JSONParser().parse(request)
+        profile_user= profile.user
 
-        if request.user != user:
+        if request.user != profile_user:
             return JsonResponse({'message':'Authorization is needed to edit profile.'})
         else:
             nickname = data.get('nickname', None)
