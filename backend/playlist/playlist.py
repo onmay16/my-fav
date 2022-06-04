@@ -5,8 +5,9 @@ from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import JSONParser
 
-from .models import Playlist
+from .models import Playlist, Song, Tag
 from .serializers import PlaylistSerializer
+from .lastfm import getInfo_track
 
 @csrf_exempt
 @permission_classes([IsAuthenticated])
@@ -66,13 +67,37 @@ def edit_playlist(request, id):
         playlist.delete()
         return JsonResponse({'messsage':'Playlist has been successfully deleted.'})
 
-# @permission_classes([IsAuthenticated])
-# def add_songs(request, id, song):
-#     playlist = Playlist.objects.get(id=id)
-#     # add songs to playlist
-#     if request.method == 'POST':
-#         try:
-#             song = Song.objects.get()
+@permission_classes([IsAuthenticated])
+def add_songs(request, id):
+    playlist = Playlist.objects.get(id=id)
+    # add songs to playlist
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        track = data['track']
+        artist = data['artist']
+        info = getInfo_track(artist, track)
+
+        try:
+            song = Song.objects.get(title=track, artist=artist)
+        except:
+            song = Song(
+                title = track,
+                artist = artist
+            )
+            song.save()
+        
+        song.playlist.add(playlist)
+
+        for tag in info['tags']:
+            try:
+                tag = Tag.objects.get(name=tag)
+            except:
+                tag = Tag(
+                    name=tag
+                )
+                tag.save()
+            tag.song.add(song)
+        
 
 
 # def delete_songs(request, id):
