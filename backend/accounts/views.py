@@ -90,7 +90,7 @@ def profile(request, nickname):
 
     if request.method == 'GET':
 
-        playlists = Playlist.objects.select_related().filter(created_by=user.id)
+        # playlists = Playlist.objects.select_related().filter(created_by=user.id)
         following = Follow.objects.select_related().filter(follower=user).count()
         follower = Follow.objects.select_related().filter(following=user).count()
 
@@ -98,7 +98,7 @@ def profile(request, nickname):
             'message':(nickname + "'s profile page"),
             'Profile info': ProfileSerializer(profile).data,
             'User info': UserSerializer(user).data,
-            'Playlist': PlaylistSerializer(playlists, many=True).data,
+            # 'Playlist': PlaylistSerializer(playlists, many=True).data,
             'Following': following,
             'Follower': follower}, 
             status=200)
