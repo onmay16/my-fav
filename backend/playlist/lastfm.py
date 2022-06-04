@@ -18,60 +18,47 @@ def search_track(track):
 
     fine_data = get_result(f'{api_url}?method=track.search&format=json&track={track}&api_key={api_key}')
 
-    total_results = fine_data['results']['opensearch:totalResults']
-    items_per_page = fine_data['results']['opensearch:itemsPerPage']
-    total_pages = int(total_results)//int(items_per_page) + 1
+    # total_results = fine_data['results']['opensearch:totalResults']
+    # items_per_page = fine_data['results']['opensearch:itemsPerPage']
+    # total_pages = int(total_results)//int(items_per_page) + 1
 
-    # print(total_pages)
+    tracks = []
+    # for pg in range(1, total_pages):
+    #     fine_data = get_result(f'{api_url}?method=track.search&format=json&track={track}&page={pg}&api_key={api_key}')
 
-    # fine_data = get_result(f'{api_url}?method=track.search&format=json&track={track}&page=3&api_key={api_key}')
+    track_data = fine_data['results']['trackmatches']['track']
 
-    # print(fine_data)
+    for track in track_data:
+        tracks.append({})
+        tracks[-1]['name'] = track['name']
+        tracks[-1]['artist'] = track['artist']
+        tracks[-1]['url'] = track['url']
+        tracks[-1]['mbid'] = track['mbid']
 
-    tracks = {}
-    for pg in range(1, total_pages):
-        fine_data = get_result(f'{api_url}?method=track.search&format=json&track={track}&page={pg}&api_key={api_key}')
-
-        print(fine_data)
-
-        track_data = fine_data['results']['trackmatches']['track']
-
-        for track in track_data:
-            name = track['name']
-            tracks[name] = {'artist':'', 'url':'', 'mbid':''}
-            tracks[name]['artist'] = track['artist']
-            tracks[name]['url'] = track['url']
-            tracks[name]['mbid'] = track['mbid']
-
-    # return JsonResponse({'tracks': tracks})
     return tracks
     
 
 @csrf_exempt
 def search_artist(artist):
-    url = api_url+'?method=artist.search&format=json&artist='+artist+'&api_key='+api_key
-    result_data = requests.get(url).text
-    fine_data = json.loads(result_data)
+    fine_data = get_result(f'{api_url}?method=artist.search&format=json&artist={artist}&api_key={api_key}')
     artist_data = fine_data['results']['artistmatches']['artist']
-    artists = {}
+
+    artists = []
 
     for artist in artist_data:
-        name = artist['name']
-        artists[name] = {'mbid': '', 'url': ''}
-        artists[name]['mbid'] = artist['mbid']
-        artists[name]['url'] = artist['url']
+        artists.append({})
+        artists[-1]['name'] = artist['name']
+        artists[-1]['mbid'] = artist['mbid']
+        artists[-1]['url'] = artist['url']
 
-    # return JsonResponse({'artists': artists})
+    print(artists)
+
     return artists
 
 
+def getInfo_track(artist, track):
+    fine_data = get_result(f'{api_url}?method=track.getInfo&format=json&track={track}&artist={artist}&api_key={api_key}')
 
-
-def getInfo_track(request, artist, track):
-    url = api_url + '?method=track.getInfo&format=json&track='+track+'&artist='+artist+'&api_key='+api_key
-    
-    result_data = requests.get(url).text
-    fine_data = json.loads(result_data)
     info_data = fine_data['track']
 
     info = {
@@ -84,5 +71,6 @@ def getInfo_track(request, artist, track):
     
     for tag in info_data['toptags']['tag']:
         info['tags'].append(tag['name'])
-    
-    return JsonResponse({'info': info})
+
+
+    return info
