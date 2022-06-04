@@ -3,6 +3,7 @@
 /pictures
 /wireframe (sketch ver.)
 /sample-data
+__pycache__
 
 DB.xlsx
 .DS_Store
