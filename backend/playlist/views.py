@@ -6,7 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import permission_classes
 from rest_framework.parsers import JSONParser
 
-from .models import Song
+from .models import Playlist, Song
+from .serializers import PlaylistSerializer
 
 from accounts.models import User, Profile
 from accounts.serializers import UserSerializer, ProfileSerializer
@@ -79,3 +80,17 @@ def mainpage(request):
             # 'First_playlist': PlaylistSerializer(first_playlist).data,
             # 'Second_playlist': PlaylistSerializer(second_playlist).data
         })
+
+@permission_classes([IsAuthenticated])
+def playlist_list_view(request, nickname):
+    loggedin_user = request.user
+    playlist_owner = Profile.objects.get(nickname=nickname)
+    # if the logged in user == playlist owner, show playlists list include private playlists
+    if loggedin_user == playlist_owner.user:
+        playlists = Playlist.objects.filter(created_by=loggedin_user)
+    #else, show not public playlists only
+    else:
+        playlists = Playlist.objects.filter(created_by=playlist_owner.user, is_private=False)
+    
+    return JsonResponse({'message':f'Playlists curated by {playlist_owner.nickname}.', 'List':PlaylistSerializer(playlists, many=True).data})
+
