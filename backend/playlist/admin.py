@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Genre, Playlist, Song, Tag
+from .models import Playlist, Song, Tag
 
 # Register your models here.
 
@@ -17,19 +17,19 @@ class SongAdmin(admin.ModelAdmin):
     ordering = ('title', 'artist', )
 
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('tag',)
-    list_filter = ('tag',)
-    search_fields = ('tag',)
+    list_display = ('name',)
+    list_filter = ('name',)
+    search_fields = ('name',)
 
-class GenreAdmin(admin.ModelAdmin):
-    list_display = ('genre',)
-    list_filter = ('genre',)
-    search_fields = ('genre',)
+# class GenreAdmin(admin.ModelAdmin):
+#     list_display = ('name',)
+#     list_filter = ('name',)
+#     search_fields = ('name',)
 
 
 admin.site.register(Playlist, PlaylistAdmin)
 admin.site.register(Song, SongAdmin)
 admin.site.register(Tag, TagAdmin)
-admin.site.register(Genre, GenreAdmin)
+# admin.site.register(Genre, GenreAdmin)
 
 # Register your models here.

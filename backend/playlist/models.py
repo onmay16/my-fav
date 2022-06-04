@@ -22,12 +22,8 @@ class Playlist(models.Model):
         return self.title
 
 class Song(models.Model):
-    # id = models.AutoField(verbose_name='Song id', primary_key=True, unique=True)
     title = models.CharField(verbose_name='Song title', max_length=255)
     artist = models.CharField(verbose_name='Artist', max_length=255)
-    # deate_released = models.DateField(verbose_name='Date released', blank=True, null=True)
-    # length = models.DurationField(verbose_name='Song duration')
-    # album_title = models.CharField(verbose_name='Album title', max_length=255, blank=True, null=True)
     playlist = models.ManyToManyField(Playlist)
 
     class Meta:
@@ -38,7 +34,7 @@ class Song(models.Model):
         return self.title
 
 class Tag(models.Model):
-    tag = models.CharField(verbose_name='Tag', max_length=10, unique=True)
+    name = models.CharField(verbose_name='name', max_length=10, unique=True, null=True)
     song = models.ManyToManyField(Song)
 
     class Meta:
@@ -48,16 +44,16 @@ class Tag(models.Model):
     def __str__(self):
         return self.tag
 
-class Genre(models.Model):
-    genre = models.CharField(verbose_name='Genre', max_length=20, primary_key=True, unique=True)
-    song = models.ManyToManyField(Song)
+# class Genre(models.Model):
+#     name = models.CharField(verbose_name='name', max_length=20, primary_key=True, unique=True)
+#     song = models.ManyToManyField(Song)
 
-    class Meta:
-        verbose_name = 'genre'
-        verbose_name_plural = 'genres'
+#     class Meta:
+#         verbose_name = 'genre'
+#         verbose_name_plural = 'genres'
     
-    def __str__(self):
-        return self.genre
+#     def __str__(self):
+#         return self.genre
 
 class Comment(models.Model):
     # id = models.AutoField(verbose_name='Comment id', primary_key=True, unique=True)
