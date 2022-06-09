@@ -1,23 +1,48 @@
-.join {
-    width: 190px;
-    height: 65px;
-    margin-top: 28px;
-    margin-right: 25px;
-    border: 3.5px solid #AF0000;
-    border-radius: 50px;
-    font-family: Chicle;
-    font-size: 30px;
-    color: #952222;
-    cursor: pointer;
+html, body {height: 100%; margin: 0; padding: 0;}
+
+ul, ol {
+    list-style: none;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
+a {
+    text-decoration: none
 }
 
-body {
-    font-family: Mosk;
+.entire-splash-page {
     text-align: center;
+    height: 100%;
+}
+
+.splash-header {
+    display: block;
+    height: 55px;
+    font-family: Fraunces;
+    font-size: 40px;
+    color: white;
+    background-color: black;
+    position: fixed;
+}
+
+.splash-body {
+    height: 100%;
+    display: flex;
+}
+
+.logo {
+    animation: rotation 8s infinite linear;
+    margin: auto;
+}
+
+/* .footer {
+    height: 240px; background: #F16924;
+} */
+
+@keyframes rotation {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(359deg);
+    }
 }
 
