@@ -5,29 +5,26 @@ import logo from '../../svg/big-logo.svg';
 
 import './Splash.css'
 
-import LogoRed from '../../components/LogoRed/LogoRed.js';
-import Footer from '../../components/Footer/Footer.js';
-
-
 function Splash() {
 
     let navigate = useNavigate();
     function handleClick() {
-        navigate('/signup')
+        navigate('/start')
     }
 
     return (
         <div className='entire-splash-page'>
             <header className='splash-header'>
-                {/* <LogoRed />
-                <button className='join' onClick={handleClick}>sharing now!</button> */}
-                <marquee behavior="" direction="">curate your own playlist and share. find other’s taste. CURATE YOUR PLAYLIST AND SHARE. FIND OTHER'S TASTE.</marquee>
+                <div className='marquee'>
+                    <span className='header-text'>----- curate and share your own playlist. find other’s taste. @curave -----</span>
+                </div>
+                <div className='marquee marquee2'>
+                    <span className='header-text2'>----- curate and share your own playlist. find other’s taste. @cruave -----</span>
+                </div>
             </header>
             <body className='splash-body'>
-                {/* <h1>This is Splash page</h1> */}
-                <img src={logo} alt="curave_logo" className='logo' />
+                <img src={logo} alt="curave_logo" className='logo' onClick={handleClick} />
             </body>
-            {/* <Footer /> */}
         </div>
     );
 }

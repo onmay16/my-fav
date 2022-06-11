@@ -1,6 +1,12 @@
-html, body {height: 100%; margin: 0; padding: 0;}
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
-ul, ol {
+ul,
+ol {
     list-style: none;
 }
 
@@ -14,14 +20,36 @@ a {
 }
 
 .splash-header {
-    display: block;
+    display: flex;
+    align-items: center;
     height: 55px;
+    width: 100%;
     font-family: Fraunces;
-    font-size: 40px;
+    font-size: 35px;
     color: white;
     background-color: black;
     position: fixed;
+    overflow: hidden;
 }
+
+.marquee {
+    top: 0;
+    left: 100%;
+    width: 100%;
+    padding-top: 2px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee2 {
+    animation-delay: 15s
+}
+
+.header-text2 {
+    text-transform: uppercase;
+} 
 
 .splash-body {
     height: 100%;
@@ -31,6 +59,7 @@ a {
 .logo {
     animation: rotation 8s infinite linear;
     margin: auto;
+    cursor: pointer;
 }
 
 /* .footer {
@@ -41,8 +70,18 @@ a {
     from {
         transform: rotateY(0deg);
     }
+
     to {
         transform: rotateY(359deg);
     }
 }
 
+@keyframes marquee {
+    0% {
+        left: 80%;
+    }
+
+    100% {
+        left: -100%
+    }
+}
