@@ -1,3 +1,23 @@
+label {
+    font-family: Fraunces;
+    letter-spacing: -1px;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+input {
+    width: 350px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-radius: 0%;
+    border-color: black;
+    font-family: 'Open Sans';
+    font-size: 19px;
+}
+
+input:focus {outline:none;}
+
 .entire-start-page {
     height: 100%;
     display: flex;
@@ -6,7 +26,7 @@
     font-size: 30px;
 }
 
-.curator-box-visible {
+.curator-box {
     display: flex;
     flex-direction: column;
     width: 147px;
@@ -21,11 +41,11 @@
     transition: transform .5s;
 }
 
-.curator-box-visible:hover {
+.curator-box:hover {
     transform: scale(1.1);
 }
 
-.curator-box-invisible {
+/* .curator-box-invisible {
     display: flex;
     flex-direction: column;
     width: 147px;
@@ -37,9 +57,9 @@
     opacity: 0;
 
     animation: fadeOut .5s;
-}
+} */
 
-.new-box-visible {
+.new-box {
     display: flex;
     flex-direction: column;
     width: 147px;
@@ -55,11 +75,11 @@
     transition: transform .5s;
 }
 
-.new-box-visible:hover {
+.new-box:hover {
     transform: scale(1.1);
 }
 
-.new-box-invisible {
+/* .new-box-invisible {
     display: flex;
     flex-direction: column;
     width: 147px;
@@ -72,7 +92,7 @@
     opacity: 0;
 
     animation: fadeOut 0.5s;
-}
+} */
 
 .curator {
     margin: auto;
@@ -96,6 +116,72 @@
     width: 46.89px;
     height: 46.89px;
     margin-top: 10px;
+}
+
+.curator-login {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-left: 10px;
+}
+
+.new-register {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-right: 10px;
+}
+
+.curator-email-login {
+    display: flex;
+    flex-direction: column;
+}
+
+.curator-login-email-btn, .new-register-email-confirm-btn {
+    display: flex;
+    width: 350px;
+    height: 50px;
+    background-color: black;
+    border: 2px solid black;
+    color: white;
+    font-family: Fraunces;
+    letter-spacing: -1px;
+    font-size: 20px;
+    border-radius: 0%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.curator-login-email {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+}
+
+.curator-login-google-btn, .new-register-google-btn {
+    display: flex;
+    width: 350px;
+    height: 50px;
+    background-color: white;
+    /* border-color: black; */
+    border: 2px solid black;
+    font-family: Fraunces;
+    letter-spacing: -1px;
+    font-size: 20px;
+    border-radius: 0%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.label-with-padding {
+    padding-top: 15px;
+}
+
+.btn-margin {
+    margin-top: 25px;
 }
 
 @keyframes opacity {
