@@ -1,0 +1,87 @@
+.noti-modal {
+    position: absolute;
+    top: 37px;
+    right: 280px;
+    width: 411px;
+    height: 150px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    background-color: white;
+}
+
+.display-block {
+    display: block;
+    animation: fadeIn 1s;
+}
+
+.display-none {
+    display: none;
+    animation: fadeOut 1s;
+}
+
+.notification {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.noti1 {
+    background-color: rgba(245, 224, 226, .5)
+}
+
+.go-profile {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.heart {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.note {
+    width: 13.04px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 22px;
+}
+
+.comment {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.content {
+    font-family: 'Open Sans';
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.content4 {
+    margin-left: auto;
+    margin-right: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all .2s;
+}
+
+.content:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
