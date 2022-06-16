@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    padding-top: 37px;
+}
+.logo {
+    width: 177px;
+    height: 52px;
+    margin-left: 43px;
+    cursor: pointer;
+}
+.user-menu {
+    display: flex;
+}
+.profile {
+    width: 52px;
+    height: 52px;
+    margin-right: 43px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.message {
+    display: block;
+    cursor: pointer;
+    margin-right: 35px;
+    width: 47.95px;
+    height: 50px;
+    transition: all .2s;
+}
+.noti {
+    display: flex;
+}
+
+.noti-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin-right: 35px;
+}
