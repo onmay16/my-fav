@@ -8,7 +8,7 @@ import Splash from '../pages/Splash/Splash.js';
 import Signin from "./Modals/Signin.js";
 import Main from "../pages/Main/Main.js";
 import Start from "../pages/Start/Start.js"
-import Nav from "./Nav/Nav.js";
+import Profile from '../pages/Profile/Profile.js';
 
 function App() {
 
@@ -20,6 +20,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/main" element={<Main />} />
         <Route path="/start" element={<Start />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
