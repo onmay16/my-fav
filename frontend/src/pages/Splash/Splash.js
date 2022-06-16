@@ -23,7 +23,7 @@ function Splash() {
                 </div>
             </header>
             <body className='splash-body'>
-                <img src={logo} alt="curave_logo" className='logo' onClick={handleClick} />
+                <img src={logo} alt="curave_logo" className='splash-logo' onClick={handleClick} />
             </body>
         </div>
     );
