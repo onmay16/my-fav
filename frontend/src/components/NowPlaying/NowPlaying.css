@@ -1,0 +1,15 @@
+.now-playing {
+    width: 150px;
+    height: 150px;
+    animation: now-playing-rotation 15s infinite linear;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@keyframes now-playing-rotation {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(359deg);}
+}
