@@ -5,19 +5,20 @@
     width: 411px;
     height: 150px;
     border-style: solid;
-    border-color: black;
+    border-color: #222222;
     border-width: 1px;
     background-color: white;
+    z-index: 1;
 }
 
 .display-block {
     display: block;
-    animation: fadeIn 1s;
+    animation: fadeIn .5s;
 }
 
 .display-none {
     display: none;
-    animation: fadeOut 1s;
+    animation: fadeOut .5s;
 }
 
 .notification {
