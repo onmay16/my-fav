@@ -9,6 +9,9 @@ import Signin from "./Modals/Signin.js";
 import Main from "../pages/Main/Main.js";
 import Start from "../pages/Start/Start.js"
 import Profile from '../pages/Profile/Profile.js';
+import AddSong from '../pages/AddSong/AddSong.js';
+import Message from '../pages/Message/Message.js';
+import Settings from '../pages/Settings/Settings.js';
 
 function App() {
 
@@ -21,6 +24,9 @@ function App() {
         <Route path="/main" element={<Main />} />
         <Route path="/start" element={<Start />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/add" element={<AddSong />} />
+        <Route path="/message" element={<Message />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   );
