@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import tempimg from '../../svg/music-player.svg'
+// import tempimg from '../../svg/music-player.svg'
 import google from '../../svg/google.svg'
 
 import './Signup.css'
 
-import LogoRed from '../../components/LogoRed/LogoRed.js';
+// import LogoRed from '../../components/LogoRed/LogoRed.js';
 import Form from '../../components/Form/Form.js'
 import Signin from '../../components/Modals/Signin';
 
@@ -85,7 +85,7 @@ function Signup() {
         <div>
             <Signin modalOpen={signInModalOn} closeModal={setSignInModalOn}/>
             <header>
-                <LogoRed />
+                {/* <LogoRed /> */}
                 <button className='signin-btn' onClick={signInClickHandler}>sign in</button>
             </header>
             <body>
@@ -110,7 +110,7 @@ function Signup() {
                     </div>
                     <div></div>
                     <div className='img-area'>
-                        <img className='temp-img' src={tempimg} />
+                        {/* <img className='temp-img' src={tempimg} /> */}
                     </div>
                     <div></div>
                 </div>
