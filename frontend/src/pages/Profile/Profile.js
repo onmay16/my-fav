@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import './Profile.css'
 
@@ -7,6 +8,8 @@ import NowPlaying from '../../components/NowPlaying/NowPlaying'
 
 import profileImage from '../../image/profile-image.jpeg'
 import instagram from '../../svg/instagram.svg'
+import addBtn from '../../svg/add-btn.svg'
+import settings from '../../svg/settings.svg'
 
 import beatles from '../../image/beatles.jpeg'
 import radioHead from '../../image/radiohead.png'
@@ -17,6 +20,15 @@ import honne from '../../image/honne.jpeg'
 import taylor from '../../image/Taylor.jpeg'
 
 function Profile() {
+
+    let navigate = useNavigate();
+    const toAddSong = () => {
+        navigate('/add')
+    }
+    const toSettings = () => {
+        navigate('/settings')
+    }
+
     return (
         <div className="entire-profile-page">
             <Header />
@@ -25,7 +37,10 @@ function Profile() {
                     <img src={profileImage} alt="" className="profile-image" />
                     <div className="profile-info">
                         <div className="left-section">
-                            <div className="user-name">Sugyeong</div>
+                            <div className="name-edit">
+                                <div className="user-name">May</div>
+                                <div className="to-edit">Edit</div>
+                            </div>
                             <div className="follow-section">
                                 <div className="follow follower">
                                     <div className="fn follower-number">253</div>
@@ -37,7 +52,8 @@ function Profile() {
                                 </div>
                             </div>
                             <div className="bio">
-                                Hi! I'm Sugyeong. Welcome to my feed.
+                                Hi! I'm May. <br />
+                                Welcome to my feed. :)
                             </div>
                         </div>
                         <div className="right-section">
@@ -46,19 +62,37 @@ function Profile() {
                             <button className="profile-btn message-btn">message</button>
                         </div>
                     </div>
+                    <div className="etc-option-btns">
+                        <img src={addBtn} alt="" className="add-btn" onClick={toAddSong} />
+                        <img src={settings} alt="" className="settings-btn" onclick={toSettings}/>
+                    </div>
                 </div>
                 <hr className="profile-hr" />
                 <div className="song-display">
                     <div className="row row1">
-                        <img src={beatles} alt="" className='cover cover1'/>
-                        <img src={radioHead} alt="" className="cover cover2" />
-                        <img src={sheIs} alt="" className="cover cover3" />
-                        <img src={surfer} alt="" className="cover cover4" />
+                        <div className="cover-container cc1">
+                            <img src={beatles} alt="" className='cover cover1' />
+                        </div>
+                        <div className="cover-container c2">
+                            <img src={radioHead} alt="" className="cover cover2" />
+                        </div>
+                        <div className="cover-container c3">
+                            <img src={sheIs} alt="" className="cover cover3" />
+                        </div>
+                        <div className="cover-container c4">
+                            <img src={surfer} alt="" className="cover cover4" />
+                        </div>
                     </div>
                     <div className="row row2">
-                        <img src={shortHair} alt="" className="cover cover5" />
-                        <img src={honne} alt="" className="cover cover6" />
-                        <img src={taylor} alt="" className="cover cover7" />
+                        <div className="cover-container c5">
+                            <img src={shortHair} alt="" className="cover cover5" />
+                        </div>
+                        <div className="cover-container c6">
+                            <img src={honne} alt="" className="cover cover6" />
+                        </div>
+                        <div className="cover-container c7">
+                            <img src={taylor} alt="" className="cover cover7" />
+                        </div>
                     </div>
                 </div>
                 <NowPlaying />

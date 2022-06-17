@@ -49,10 +49,33 @@ a {
     border-bottom-right-radius: 225px;
 }
 
+.etc-option-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-btn, .settings-btn {
+    margin-left: 30px;
+    margin-bottom: 10px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+
+    transition: all .4s ease-in-out;
+}
+
+.add-btn:hover {
+    transform: rotate(180deg);
+}
+
+.settings-btn:hover {
+    transform: rotate(90deg);
+}
+
 .profile-hr {
     margin: auto;
     margin-bottom: 50px;
-    width: 1035px;
+    width: 1110px;
     object-fit: cover;
     border: none;
     border-top: 3px dotted #222222;
@@ -66,11 +89,32 @@ a {
     margin-left: 35px;
 }
 
+.name-edit {
+    display: flex;
+    width: fit-content;
+    justify-content: space-between;
+}
+
 .user-name {
     font-family: 'Fraunces';
     font-size: 35px;
     font-weight: 600;
     letter-spacing: -1px;
+    margin-right: 20px;
+}
+
+.to-edit {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: 2px;
+    font-size: 17px;
+    cursor: pointer;
+
+    transition: all .2s;
+}
+
+.to-edit:hover {
+    text-decoration: underline;
 }
 
 .follow-section {
@@ -144,13 +188,32 @@ a {
 }
 
 .row {
+    display: flex;
     height: 350px;
 }
 
-.cover {
+.cover-container {
     height: 350px;
     width: 350px;
+    cursor: pointer;
+
+    transition: all .2s;
+}
+
+.cover-container:hover {
+    opacity: 50%;
+}
+
+.cover {
+    height: 100%;
+    width: 100%;
     object-fit: cover;
+    
+    transition: all 0.2s;
+}
+
+.cover:hover {
+    transform: scale(0.85);
 }
 
 @keyframes page-fade-in {
