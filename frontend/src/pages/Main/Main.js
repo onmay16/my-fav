@@ -5,15 +5,13 @@ import './Main.css'
 import Header from '../../components/Header/Header';
 import NowPlaying from '../../components/NowPlaying/NowPlaying';
 
-import nowPlaying from '../../image/now-playing.png'
-
 function Main() {
 
     return (
         <div className="entire-main-page">
             <Header />
             <body className='main-body'>
-                <div className="welcome">Welcome Back,<br />Sugyeong!</div>
+                <div className="welcome">Welcome Back,<br />May!</div>
                 <div className="explore-box">
                     <div className='explore-text'>Explore feeds including these songs ☕</div>
                     <div className="songs">

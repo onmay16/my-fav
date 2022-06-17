@@ -25,18 +25,23 @@ a {
 
 .entire-main-page {
     height: 100%;
-    animation: page-fade-in 0.5s
+    display: flex;
+    flex-direction: column;
+
+    animation: page-fade-in 0.5s;
 }
 
 .main-body {
     display: flex;
     flex-direction: column;
+    width: fit-content;
+    margin: auto;
 }
 
 .welcome {
     margin: auto;
     margin-bottom: -20px;
-    margin-left: 576.667px;
+    margin-left: 0%;
     font-family: Fraunces;
     font-size: 64px;
     font-weight: 700;
