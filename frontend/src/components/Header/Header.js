@@ -19,6 +19,9 @@ function Header() {
     const toProfile = () => {
         navigate('/profile')
     };
+    const toMessage = () => {
+        navigate('/message')
+    };
 
     const [notiVisible, setNotiVisible] = useState(false);
 
@@ -30,7 +33,7 @@ function Header() {
                     <Notification notiVisible={notiVisible} className='noti-modal' />
                     <img src={notification} alt="" className="noti-icon" onClick={() => setNotiVisible(!notiVisible)} />
                 </div>
-                <img src={message} alt="" className='message' />
+                <img src={message} alt="" className='message' onClick={toMessage}/>
                 <img src={userIcon} alt="" className="profile" onClick={toProfile}/>
             </div>
         </header>
