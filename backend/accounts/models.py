@@ -9,8 +9,6 @@ import datetime
 
 from rest_framework.authtoken.models import Token
 
-# Create your models here.
-
 class UserManager(BaseUserManager):
     def create_user(self, email, password):
         if not email:

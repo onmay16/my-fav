@@ -1,13 +1,11 @@
 from django.http import JsonResponse
 
-from random import randint
-
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import permission_classes
 from rest_framework.parsers import JSONParser
 
-from .models import Playlist, Song
-from .serializers import PlaylistSerializer
+from .models import Song
+# from .serializers import PlaylistSerializer
 
 from accounts.models import User, Profile
 from accounts.serializers import UserSerializer, ProfileSerializer

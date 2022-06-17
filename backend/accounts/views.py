@@ -7,8 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Follow, User, Profile
 from .serializers import ProfileSerializer, UserSerializer
 
-from playlist.models import Playlist
-from playlist.serializers import PlaylistSerializer
+# from playlist.models import Playlist
+# from playlist.serializers import PlaylistSerializer
 
 from rest_framework.parsers import JSONParser
 from rest_framework.authtoken.models import Token
