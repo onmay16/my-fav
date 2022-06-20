@@ -1,7 +1,6 @@
 // import './App.css';
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import axios from 'axios';
 
 import Signup from "../pages/Signup/Signup.js";
 import Splash from '../pages/Splash/Splash.js';
@@ -16,11 +15,9 @@ import Settings from '../pages/Settings/Settings.js';
 function App() {
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Splash />} />
-        <Route path="/signup" element={<Signup />} /> 
-        <Route path="/signin" element={<Signin />} />
         <Route path="/main" element={<Main />} />
         <Route path="/start" element={<Start />} />
         <Route path="/profile" element={<Profile />} />

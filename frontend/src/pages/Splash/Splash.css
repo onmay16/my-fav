@@ -22,10 +22,10 @@ a {
 .splash-header {
     display: flex;
     align-items: center;
-    height: 55px;
+    height: 40px;
     width: 100%;
     font-family: Fraunces;
-    font-size: 35px;
+    font-size: 25px;
     color: white;
     background-color: #222222;
     position: fixed;
@@ -40,13 +40,14 @@ a {
     overflow: hidden;
     position: absolute;
     white-space: nowrap;
+    margin-top: 2px;
+
     animation: marquee 30s linear infinite;
 }
 
 .marquee2 {
     animation-delay: 15s
 }
-
 .header-text2 {
     text-transform: uppercase;
 } 
@@ -57,22 +58,18 @@ a {
 }
 
 .splash-logo {
-    animation: rotation 8s infinite linear;
+    animation: rotation 5s infinite linear;
     margin: auto;
     cursor: pointer;
+    width: 450px;
 }
 
-/* .footer {
-    height: 240px; background: #F16924;
-} */
-
 @keyframes rotation {
-    from {
-        transform: rotateY(0deg);
+    0% {
+        transform: rotateY(0deg)
     }
-
-    to {
-        transform: rotateY(359deg);
+    100% {
+        transform: rotateY(359deg)
     }
 }
 

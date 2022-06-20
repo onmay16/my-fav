@@ -35,16 +35,16 @@ a {
 
 .profile-image {
     display: block;
-    width: 305px;
-    height: 305px;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
     border-top-left-radius: 225px;
 }
 
 .profile-info {
     display: flex;
-    width: 730px;
-    height: 305px;
+    width: 600px;
+    height: 250px;
     background-color: #222222;
     border-bottom-right-radius: 225px;
 }
@@ -55,10 +55,10 @@ a {
 }
 
 .add-btn, .settings-btn {
-    margin-left: 30px;
+    margin-left: 22px;
     margin-bottom: 10px;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
 
     transition: all .4s ease-in-out;
@@ -75,7 +75,7 @@ a {
 .profile-hr {
     margin: auto;
     margin-bottom: 50px;
-    width: 1110px;
+    width: 915px;
     object-fit: cover;
     border: none;
     border-top: 3px dotted #222222;
@@ -85,7 +85,7 @@ a {
     color: white;
     display: flex;
     flex-direction: column;
-    margin-top: 25px;
+    margin-top: 20px;
     margin-left: 35px;
 }
 
@@ -97,7 +97,7 @@ a {
 
 .user-name {
     font-family: 'Fraunces';
-    font-size: 35px;
+    font-size: 28px;
     font-weight: 600;
     letter-spacing: -1px;
     margin-right: 20px;
@@ -107,7 +107,7 @@ a {
     margin-left: auto;
     margin-top: auto;
     margin-bottom: 2px;
-    font-size: 17px;
+    font-size: 14px;
     cursor: pointer;
 
     transition: all .2s;
@@ -120,9 +120,9 @@ a {
 .follow-section {
     display: flex;
     flex-direction: row;
-    font-size: 19px;
-    margin-top: 35px;
-    margin-bottom: 35px;
+    font-size: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     justify-content: space-between;
     width: 180px;
 }
@@ -136,7 +136,7 @@ a {
     font-weight: 800;
     margin: auto;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 
     transition: all .2s;
 }
@@ -146,13 +146,13 @@ a {
 }
 
 .bio {
-    font-size: 19px;
+    font-size: 15px;
 }
 
 .right-section {
     margin-left: auto;
-    margin-right: 30px;
-    margin-top: 25px;
+    margin-right: 25px;
+    margin-top: 20px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -162,13 +162,13 @@ a {
     margin-left: auto;
     width: 83px;
     height: 72px;
-    margin-bottom: 83px;
+    margin-bottom:50px;
 }
 
 .profile-btn {
-    width: 112px;
+    width: 100px;
     height: 48px;
-    font-size: 18px;
+    font-size: 15px;
     border-radius: 0;
     border: 2.5px solid #222222;
 }
@@ -179,22 +179,24 @@ a {
 }
 
 .message-btn {
-    margin-top: 15px;
+    margin-bottom: 23px;
+    margin-top: 10px;
 }
 
 .song-display {
-    width: 1400px;
+    width: fit-content;
     margin: auto;
 }
 
 .row {
     display: flex;
-    height: 350px;
+    height: fit-content;
+    width: fit-content;
 }
 
 .cover-container {
-    height: 350px;
-    width: 350px;
+    height: 280px;
+    width: 280px;
     cursor: pointer;
 
     transition: all .2s;

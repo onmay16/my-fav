@@ -37,34 +37,34 @@ a {
 }
 
 .search-icon {
-    width: 29px;
-    height: 29px;
+    width: 25px;
+    height: 25px;
     margin: auto;
-    margin-left: 24px;
+    margin-left: 20px;
 }
 
 .icon-background {
     display: flex;
-    width: 70px;
-    height: 55px;
+    width: 58.09px;
+    height: 45px;
     background-color: #222222;
     border-bottom-left-radius: 250px;
     border-top-left-radius: 250px;
 }
 
 .search-input {
-    height: 49px;
-    width: 410px;
-    border: #222222 solid 2px;
+    height: 41px;
+    width: 351px;
+    border: #222222 solid 1px;
     border-top-right-radius: 250px;
     border-bottom-right-radius: 250px;
-    font-size: 16px;
+    font-size: 13px;
     padding-left: 20px;
 }
 
 .sample-cover {
-    width: 500px;
-    height: 500px;
+    width: 430px;
+    height: 430px;
     object-fit: cover;
     margin-right: 50px;
 }
@@ -72,7 +72,7 @@ a {
 .caption-section {
     display: flex;
     flex-direction: column;
-    width: 500px;
+    height: 430px;
 }
 
 .caption-input {
@@ -80,7 +80,7 @@ a {
     border-width: 4px 0 4px 0;
     width: 500px;
     height: 400px;
-    font-size: 18px;
+    font-size: 14px;
     padding-top: 20px;
     font-family: 'Open sans';
     resize: none;
@@ -97,11 +97,12 @@ a {
 .byte-check {
     width: fit-content;
     margin-top: 10px;
+    font-size: 14px;
 }
 
 .add-confirm-btn {
-    width: 45px;
-    height: 45px;
+    width: 38px;
+    height: 38px;
     margin-left: auto;
     margin-top: 20px;
     cursor: pointer;

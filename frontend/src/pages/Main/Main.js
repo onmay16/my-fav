@@ -14,7 +14,7 @@ function Main() {
                 <div className="welcome">Welcome Back,<br />May!</div>
                 <div className="explore-box">
                     <div className='explore-text'>Explore feeds including these songs ☕</div>
-                    <div className="songs">
+                    <div className="songs songs1">
                         <div className="song song1">
                             <div className="title title1">
                                 Every Summertime

@@ -34,7 +34,6 @@ a {
 .main-body {
     display: flex;
     flex-direction: column;
-    width: fit-content;
     margin: auto;
 }
 
@@ -43,7 +42,7 @@ a {
     margin-bottom: -20px;
     margin-left: 0%;
     font-family: Fraunces;
-    font-size: 64px;
+    font-size: 50px;
     font-weight: 700;
     z-index: 1;
 }
@@ -54,7 +53,7 @@ a {
     margin: auto;
     margin-top: 0%;
     width: 980px;
-    height: 385px;
+    height: fit-content;
     font-family: 'Open Sans';
     font-weight: 700;
     position: relative;
@@ -72,16 +71,17 @@ a {
 }
 
 .explore-text {
-    font-size: 32px;
-    margin-top: 50px;
+    font-size: 20px;
+    margin-top: 35px;
     margin-left: 62px;
-    margin-bottom: 50px;
+    margin-bottom: 35px;
     position: relative;
 }
 
 .songs {
     margin: auto;
     margin-top: 0;
+    margin-bottom: 50px;
     display: flex;
     position: relative;
 }
@@ -90,12 +90,12 @@ a {
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 174px;
-    height: 174px;
+    width: 165px;
+    height: 165px;
     background-color: white;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.15) 4px 4px 2.6px;
-    font-size: 0.75vw;
+    font-size: 15px;
     color: #2F2F2F;
     cursor: pointer;
 

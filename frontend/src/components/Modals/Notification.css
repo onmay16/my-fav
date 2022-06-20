@@ -1,9 +1,9 @@
 .noti-modal {
     position: absolute;
-    top: 37px;
-    right: 280px;
-    width: 411px;
-    height: 150px;
+    top: 40px;
+    right: 240px;
+    width: fit-content;
+    height: fit-content;
     border-style: solid;
     border-color: #222222;
     border-width: 1px;
@@ -22,9 +22,10 @@
 }
 
 .notification {
-    height: 50px;
+    height: 45px;
     display: flex;
     align-items: center;
+    padding-right: 20px;
 }
 
 .noti1 {
@@ -60,7 +61,7 @@
 
 .content {
     font-family: 'Open Sans';
-    font-size: 18px;
+    font-size: 14px;
     cursor: pointer;
 }
 

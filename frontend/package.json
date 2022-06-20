@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://onmay16.github.io/curave",
   "dependencies": {
     "@chakra-ui/react": "^1.8.3",
     "@emotion/react": "^11",
@@ -11,6 +12,7 @@
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.25.0",
     "framer-motion": "^6",
+    "gh-pages": "^4.0.0",
     "history": "^5.2.0",
     "http-proxy-middleware": "^2.0.3",
     "react": "^17.0.2",
@@ -27,7 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "predeploy": "yarn build"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +52,7 @@
     ]
   },
   "engines": {
-    "node": "17.3.0",    
-    "yarn": "1.22.17"     
+    "node": "17.3.0",
+    "yarn": "1.22.17"
   }
 }
