@@ -1,6 +1,7 @@
-backend/my_settings.py
+my_settings.py
 db.sqlite3
 media/
 __pycache__/
 migrations/
 *.pyc
+curave_db

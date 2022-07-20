@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://onmay16.github.io/curave",
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@chakra-ui/react": "^1.8.3",
     "@emotion/react": "^11",
@@ -22,6 +22,10 @@
     "react-router-dom": "6",
     "react-scripts": "5.0.0",
     "regenerator-runtime": "^0.13.9",
+    "request-json": "^0.6.5",
+    "require": "^2.4.20",
+    "reuqest": "^2.81.1",
+    "spotify-web-api-js": "^1.5.2",
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.0"
   },
