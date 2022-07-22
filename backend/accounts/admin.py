@@ -2,8 +2,9 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.db.models.expressions import OrderBy
+from django.utils.html import format_html
 
-from .models import Follow, Message, Notification, User, Profile
+from .models import Profile, Message, Notification, User
 
 # Register your models here.
 
@@ -27,21 +28,26 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'nickname', 'updated_at', 'bio', 'insta_url')
+    list_display = ('user', 'nickname', 'updated_at', 'bio', 'instagram', 'profile_pic_tag', )
     search_fields = ('nickname',)
     ordering = ('-updated_at',)
     prepopulated_fields = {'slug': ('nickname', )}
 
+    def profile_pic_tag(self, obj):
+        return obj.profile_pic_tag
+
+    profile_pic_tag.short_description = 'profile_pic'
+    profile_pic_tag.allow_tags = True
+
+
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'sender', 'receiver', 'message', 'sent_at', 'read_at')
+    list_display = ('id', 'sender', 'receiver', 'message', 'sent_at', 'read_at',)
     list_filter = ('sender', 'receiver', 'sent_at')
     search_fields = ('sender', 'receiver')
     ordering = ('-sent_at',)
 
 # class FollowAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'follower', 'following')
-#     list_filter = ('follower', 'following')
-#     search_fields = ('follower', 'following')
+#     list_display = ('id', )
 
 # class NotificationAdmin(admin.ModelAdmin):
 #     list_display = ('id', 'from_user', 'to_user', 'like_type')
