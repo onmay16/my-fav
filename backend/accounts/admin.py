@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.db.models.expressions import OrderBy
 from django.utils.html import format_html
 
-from .models import Profile, Message, Notification, User
+from .models import Profile, Message, Notification, User, Follow
 
 # Register your models here.
 
@@ -46,8 +46,9 @@ class MessageAdmin(admin.ModelAdmin):
     search_fields = ('sender', 'receiver')
     ordering = ('-sent_at',)
 
-# class FollowAdmin(admin.ModelAdmin):
-#     list_display = ('id', )
+class FollowAdmin(admin.ModelAdmin):
+    list_display = ('id', 'following', 'follower')
+    # filter_horizontal = ('follower')
 
 # class NotificationAdmin(admin.ModelAdmin):
 #     list_display = ('id', 'from_user', 'to_user', 'like_type')
@@ -60,6 +61,6 @@ admin.site.register(User, UserAdmin)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.unregister(Group)
 admin.site.register(Message, MessageAdmin)
-# admin.site.register(Follow, FollowAdmin)
+admin.site.register(Follow, FollowAdmin)
 # admin.site.register(Notification, NotificationAdmin)
 

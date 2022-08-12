@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin
@@ -93,8 +94,8 @@ class Profile(models.Model):
     bio = models.TextField(verbose_name='Bio', null=True, blank=True)
     instagram = models.CharField(verbose_name='Instagram id', null=True, blank=True, max_length=16)
     slug = models.SlugField(max_length=20, blank=True, null=True)
-    follower = models.ManyToManyField(User, related_name='following')
-    following = models.ManyToManyField(User, related_name='follower')
+    # follower = models.ManyToManyField(User, related_name='following')
+    # following = models.ManyToManyField(User, related_name='follower')
 
     class Meta:
         verbose_name = 'profile'
@@ -131,17 +132,17 @@ class Message(models.Model):
     def __str__(self):
         return self.id
 
-# class Follow(models.Model):
-#     # id = models.AutoField(verbose_name='Follow id', primary_key=True, unique=True)
-#     follower = models.ManyToManyField(User, verbose_name='Follower', related_name='following')
-#     following = models.ManyToManyField(User, verbose_name='Following', related_name='follower')
+class Follow(models.Model):
+    # id = models.AutoField(verbose_name='Follow id', primary_key=True, unique=True)
+    follower = models.ForeignKey(User, verbose_name='Follower', related_name='following', on_delete=models.CASCADE, null=True) # people who are following the 'following'
+    following = models.ForeignKey(User, verbose_name='Following', related_name='follower', on_delete=models.CASCADE, null=True) # person who are followed by others
 
-#     class Meta:
-#         verbose_name = 'follow'
-#         verbose_name_plural = 'follows'
+    class Meta:
+        verbose_name = 'follow'
+        verbose_name_plural = 'follows'
     
-#     def __str__(self):
-#         return self.id
+    def __str__(self):
+        return self.id
 
 class NotificationSender(models.Model):
     # notification = models.ForeignKey('Notification', verbose_name='Notifation', related_name='notification', on_delete=models.CASCADE)
