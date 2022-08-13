@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 
 from pathlib import Path
-import django_on_heroku
+# import django_on_heroku
 
 from backend import my_settings
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+    'webpack_loader',
 
     'corsheaders',
 
@@ -59,10 +60,10 @@ AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -75,7 +76,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, '../', 'frontend', 'build', 'static')
+            os.path.join(BASE_DIR, '../', 'frontend', 'build')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -95,7 +96,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = my_settings.DATABASES
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'curave_db',
+    }
+}
 
 
 # Password validation
@@ -132,14 +138,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '../', 'frontend', 'build', 'static')
+    # Tell Django where to look for React's static files (css, js)
+    os.path.join(BASE_DIR, 'static',),
+    os.path.join(BASE_DIR, '../frontend/build/static'),
 ]
-django_on_heroku.settings(locals())
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+# django_on_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -163,10 +174,10 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-]
+CORS_ORIGIN_WHITELIST = ['http://localhost:8000', 'http://127.0.0.1:8000']
 CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
 
 # AUTHENTICATION_BACKENDS = [
 #     # Needed to login by username in Django admin, regardless of `allauth`
@@ -175,11 +186,10 @@ CORS_ALLOW_CREDENTIALS = True
 #     'allauth.account.auth_backends.AuthenticationBackend',
 # ]
 
-LOGIN_REDIRECTION_URL = '/' # should modify later
+LOGIN_REDIRECTION_URL = '/'  # should modify later
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
 CSRF_COOKIE_SECURE = True
 
 # Youtube API
-# YOUTUBE_API_KEY = my_settings.YOUTUBE_API_KEY
 LASTFM_API_KEY = my_settings.LASTFM_API_KEY
