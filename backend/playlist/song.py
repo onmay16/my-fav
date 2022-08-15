@@ -9,10 +9,9 @@ from .models import Song, Tag
 # from .serializers import PlaylistSerializer
 from .lastfm import getInfo_track
 
+@csrf_exempt
 @permission_classes([IsAuthenticated])
-def add_song(track, artist):
-    # add songs to playlist
-    info = getInfo_track(artist, track)
+def add_song(track, artist, jacket):
 
     try:
         song = Song.objects.get(title=track, artist=artist)
@@ -20,19 +19,10 @@ def add_song(track, artist):
     except:
         song = Song(
             title = track,
-            artist = artist
+            artist = artist,
+            jacket = jacket
         )
         song.save()
-
-    for tag in info['tags']:
-        try:
-            tag = Tag.objects.get(name=tag)
-        except:
-            tag = Tag(
-                name=tag
-            )
-            tag.save()
-        tag.song.add(song)
 
     return song
 

@@ -22,7 +22,7 @@ class TagAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('song', 'posted_by', 'posted_at', 'is_deleted', 'content')
+    list_display = ('id', 'song', 'posted_by', 'posted_at', 'is_deleted', 'content')
     list_filter = ('song', 'posted_by', 'posted_at',)
     search_fields = ('song', 'posted_by', 'posted_at',)
 

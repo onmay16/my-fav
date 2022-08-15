@@ -15,21 +15,24 @@ def add_post(request):
     if request.method == 'POST':
 
         data = JSONParser().parse(request)
-        new_post = Post(posted_by=request.user)
         track = data['track']
         artist = data['artist']
+        jacket = data['jacket']
         content = data.get('content', None)
+
+        song = add_song(track, artist, jacket)
 
         try:
             song = Song.objects.get(title=track, artist=artist)
         except:
             song = add_song(track, artist)
-        
+
+        new_post = Post(posted_by=request.user)
         new_post.song = song
         if content:
             new_post.content = content
-        
         new_post.save()
+        
         return JsonResponse({'message':'Song is succesfully added to your feed.'})
 
 @csrf_exempt
@@ -51,7 +54,8 @@ def edit_post(request, id):
 @csrf_exempt
 @permission_classes([IsAuthenticated])
 def delete_post(request, id):
-    post = Post.objects.get(id=id)
-    post.delete()
-    return JsonResponse({'message':'The song is succesfully deleted from your feed.'})
+    if request.method == 'GET':
+        post = Post.objects.get(id=id)
+        post.delete()
+        return JsonResponse({'message':'The song is succesfully deleted from your feed.'})
 

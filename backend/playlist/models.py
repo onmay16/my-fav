@@ -3,6 +3,7 @@ from operator import mod
 from pyexpat import model
 from statistics import mode
 from tabnanny import verbose
+from xml.etree.ElementTree import tostring
 from django.db import models
 from django.db.models.deletion import CASCADE
 
@@ -27,7 +28,7 @@ from accounts.models import User
 class Song(models.Model):
     title = models.CharField(verbose_name='Song title', max_length=255)
     artist = models.CharField(verbose_name='Artist', max_length=255)
-    jacket = models.ImageField(verbose_name='Jacket', upload_to='jackets/', blank=True, null=True)
+    jacket = models.URLField(verbose_name='jacket_pic', null=True, blank=True)
 
     class Meta:
         verbose_name = 'song'
@@ -59,18 +60,7 @@ class Post(models.Model):
         verbose_name_plural = 'posts'
     
     def __str__(self):
-        return self.id
-
-# class Genre(models.Model):
-#     name = models.CharField(verbose_name='name', max_length=20, primary_key=True, unique=True)
-#     song = models.ManyToManyField(Song)
-
-#     class Meta:
-#         verbose_name = 'genre'
-#         verbose_name_plural = 'genres'
-    
-#     def __str__(self):
-#         return self.genre
+        return str(self.id)
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True)
