@@ -1,0 +1,123 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none
+}
+
+.entire-edit-page {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.current-section {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.edit-current-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.edit-current-nick {
+    width: fit-content;
+    font-weight: 600;
+    font-size: 18px;
+    margin: auto;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-section {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.edit-label-container {
+    width: 150px;
+    display: flex;
+    margin-right: 20px;
+}
+
+.edit-label {
+    font-family: 'Open Sans';
+    font-size: 16px;
+    font-weight: 600;
+    color: #222222;
+    margin: auto;
+    margin-right: 0;
+    height: fit-content;
+}
+
+.edit-input {
+    width: 355px;
+    min-width: 355px;
+    max-width: 355px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #dbdbdb;
+    font-family: 'Open Sans';
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.edit-label-pic {
+    margin: auto;
+    cursor: pointer;
+    width: fit-content;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #666666;
+}
+
+.edit-label-pic:hover {
+    text-decoration: underline;
+}
+
+.edit-profile-pic {
+    border: none;
+    opacity: 0;
+    width: 0.1px;
+    max-width: 0.1px !important;
+    height: 0.1px;
+}
+
+.edit-label-bio {
+    margin-top: 6.25px;
+}
+
+.edit-bio {
+    min-height: 100px;
+    padding-top: 10px;
+}
+
+.edit-submit {
+    width: 38px;
+    height: 38px;
+    margin: auto;
+    margin-right: 0;
+    cursor: pointer;
+
+    transition: all .2s;
+}
+
+.edit-submit:hover {
+    transform: scale(1.2);
+}

@@ -1,0 +1,173 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none
+}
+
+.post-detail-bg {
+    position: fixed;
+    top:0; left: 0; bottom: 0; right: 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.display-block {
+    display: block;
+    animation: fadeIn .2s;
+}
+
+.display-none {
+    display: none;
+    animation: fadeOut .2s;
+}
+
+.enitre-post-detail {
+    width: 1200px;
+    height: 700px;
+    display: flex;
+    border-radius: 10px;
+    position: absolute;
+    background-color: rgb(232, 232, 232);
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.post-section {
+    width: 555px;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px dashed #222222;
+}
+
+.detail-cover-image {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    margin: 25px;
+    border-radius: 10px;
+}
+
+.post-content {
+    margin-left: 40px;
+    font-size: 18px;
+}
+
+.post-owner {
+    font-weight: 700;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.post-owner:hover {
+    text-decoration: underline;
+}
+
+.detail-plus {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 675px;
+    bottom: 25px;
+    cursor: pointer;
+
+    transition: all .4s ease-in-out;
+}
+
+.detail-plus:hover {
+    transform: rotate(180deg);
+}
+
+.detail-close {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    cursor: pointer;
+}
+
+.comment-section {
+    width: 100%;
+    font-size: 15px;
+    padding: 40px;
+}
+
+.comment-user {
+    display: flex;
+    width: fit-content;
+}
+
+.cu-profile-pic {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-right: 15px;
+}
+
+.cu-id, .cu-comment {
+    margin: auto;
+}
+
+.cu-id {
+    font-weight: 600;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.cu-id:hover {
+    text-decoration: underline;
+}
+
+.ed-buttons {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+}
+
+.detail-edit {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-right: 15px;
+
+    transition: all 0.2s;
+}
+
+.detail-delete {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    transition: all 0.2s;
+}
+
+.detail-delete:hover, .detail-edit:hover {
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}

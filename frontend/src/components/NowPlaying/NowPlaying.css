@@ -1,6 +1,6 @@
 .now-playing {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     animation: now-playing-rotation 15s infinite linear;
     position: fixed;
     bottom: 30px;
