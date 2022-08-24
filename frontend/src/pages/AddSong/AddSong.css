@@ -28,8 +28,14 @@ a {
 }
 
 .cover-caption-section {
+    /* position: fixed; */
     display: flex;
     margin-top: 50px;
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
 }
 
 .search-bar {
@@ -40,26 +46,101 @@ a {
     width: 25px;
     height: 25px;
     margin: auto;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .icon-background {
     display: flex;
-    width: 58.09px;
+    width: 50px;
     height: 45px;
     background-color: #222222;
     border-bottom-left-radius: 250px;
     border-top-left-radius: 250px;
 }
 
+.search-category {
+    width: fit-content;
+    border-left: none;
+    border-right: none;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.search-category:focus {
+    outline: none;
+}
+
 .search-input {
     height: 41px;
-    width: 351px;
+    width: 365px;
     border: #222222 solid 1px;
     border-top-right-radius: 250px;
     border-bottom-right-radius: 250px;
+    border-left: none;
     font-size: 13px;
-    padding-left: 20px;
+    padding-left: 15px;
+}
+
+.search-result-list {
+    flex-direction: column;
+    position: absolute;
+    margin-top: 44px;
+    width: 430px;
+    height: fit-content;
+    max-height: 400px;
+    overflow: scroll;
+    background-color: white;
+    border: 1px solid #222222;
+    font-size: 14px;
+    border-radius: 25px;
+}
+
+.empty-list-text {
+    padding-top: 20px;
+    margin: auto;
+    font-size: medium;
+    color: #222222;
+}
+
+.individual {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    cursor: pointer;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.individual:hover {
+    background-color: #E0F8FF;
+    background-clip: padding-box, content-box;
+}
+
+.individual-info {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-left: 20px;
+}
+
+.album-art {
+    margin: auto;
+    margin-left: 20px;
+    margin-right: 5px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.track {
+    font-weight: 600;
+}
+
+.track, .artist {
+    margin: 0;
+    margin-left: 0;
+    height: fit-content;
 }
 
 .sample-cover {
@@ -67,12 +148,52 @@ a {
     height: 430px;
     object-fit: cover;
     margin-right: 50px;
+    /* border: 1px dashed #222222; */
+    text-align: center;
+    display: flex;
+    border:  1px dashed #A0A0A0;
+}
+
+.sample-cover-text {
+    margin: auto;
 }
 
 .caption-section {
     display: flex;
     flex-direction: column;
     height: 430px;
+}
+
+.selected-song-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-family: Fraunces;
+    font-size: 20px;
+    width: 500px;
+}
+
+.selected-song-title {
+    display: block;
+    margin-left: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 18px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 29px;
+}
+
+.selected-song-artist {
+    display: block;
+    margin: auto;
+    margin-right: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 29px;
 }
 
 .caption-input {
