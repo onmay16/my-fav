@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import './Main.css'
 
@@ -7,50 +9,63 @@ import NowPlaying from '../../components/NowPlaying/NowPlaying';
 
 function Main() {
 
+    const [user, setUser] = useState({});
+    const userHandler = (user) => {
+        setUser(user);
+    }
+    const [mainSongs, setMainSongs] = useState([]);
+    const [mainUsers, setMainUsers] = useState([]);
+
+    let navigate = useNavigate();
+    const toProfile = (nickname) => {
+        navigate('/'+ nickname)
+    };
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/playlist/user/")
+        .then((response) => {
+            userHandler(response.data.profile);
+        }).catch((error) => {
+            console.log(error);
+        })
+
+        // const randomSongs = []
+        axios.get("http://localhost:8000/playlist/main/")
+        .then((response) => {
+            console.log(response);
+            setMainSongs(response.data.songs);
+            setMainUsers(response.data.users);
+        }).catch((error) => {
+            console.log(error);
+        })
+
+    }, [])
+
     return (
         <div className="entire-main-page">
             <Header />
             <body className='main-body'>
-                <div className="welcome">Welcome Back,<br />May!</div>
+                <div className="welcome">Welcome Back,<br />{user.nickname}!</div>
                 <div className="explore-box">
                     <div className='explore-text'>Explore feeds including these songs ☕</div>
-                    <div className="songs songs1">
-                        <div className="song song1">
-                            <div className="title title1">
-                                Every Summertime
-                            </div>
-                            <hr className='main-hr' />
-                            <div className="artist artist1">
-                                NIKI
-                            </div>
-                        </div>
-                        <div className="song song2">
-                            <div className="title title2">
-                                The Way It Was Before
-                            </div>
-                            <hr className='main-hr' />
-                            <div className="artist artist2">
-                                Johnny Stimson
-                            </div>
-                        </div>
-                        <div className="song song3">
-                            <div className="title title3">
-                                pizza pepperoni
-                            </div>
-                            <hr className='main-hr' />
-                            <div className="artist artist3">
-                                Rahmania Astrini
-                            </div>
-                        </div>
-                        <div className="song song4">
-                            <div className="title title4">
-                                Lemon
-                            </div>
-                            <hr className='main-hr' />
-                            <div className="artist artist4">
-                                Kenshi Yonezu
-                            </div>
-                        </div>
+                    <div className="songs">
+                        {mainSongs.map((song, i) => {
+                            const className1 = "song song" + (i+1)
+                            const className2 = "main-title title" + (i+1)
+                            const className3 = "main-artist artist" + (i+1)
+
+                            return (
+                                <div className={className1} onClick={() => toProfile(mainUsers[i].nickname)}>
+                                    <div className={className2}>
+                                        {song.title}
+                                    </div>
+                                    <hr className='main-hr' />
+                                    <div className={className3}>
+                                        {song.artist}
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
                 <NowPlaying />

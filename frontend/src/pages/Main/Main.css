@@ -83,7 +83,8 @@ a {
     margin-top: 0;
     margin-bottom: 50px;
     display: flex;
-    position: relative;
+    position: relative; 
+    /* z-index: -1; */
 }
 
 .song {
@@ -114,17 +115,17 @@ a {
     margin-right: 53px;
 }
 
-.title, .artist {
+.main-title, .main-artist {
     width: 128px;
     margin: auto;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.title {
+.main-title {
     margin-bottom: 0%;
 }
 
-.artist {
+.main-artist {
     margin-top: 0%;
 }
