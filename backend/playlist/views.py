@@ -1,94 +1,45 @@
+import random
+
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import permission_classes
 from rest_framework.parsers import JSONParser
 
-from .models import Song
-# from .serializers import PlaylistSerializer
+from .models import Song, Post
+from .serializers import PostSerializer, SongSerializer
 
-from accounts.models import User, Profile
+from accounts.models import Profile
 from accounts.serializers import UserSerializer, ProfileSerializer
 
+@csrf_exempt
 @permission_classes([IsAuthenticated])
-def mainpage(request):
-
-    def get_random_idx(obj, start):
-        total = obj.objects.all().count()
-        # print('total: ' + str(total))
-        random_idx = randint(start, total)
-        return random_idx
-    
-    def song_list(playlists, lst=[]):
-        for playlist in playlists:
-            songs = Song.objects.select_related().filter(playlist=playlist)
-            lst.extend(songs)
-        return lst
+def user(request):
 
     if request.method == 'GET':
-        # user = request.user
-        # nickname = Profile.objects.get(user=user).nickname
-        
-        # user recommendation section
-        first_user_idx = get_random_idx(User, 2)
-        second_user_idx = get_random_idx(User, 2)
+        user = request.user
+        profile = Profile.objects.get(user=user)
+        print(ProfileSerializer(profile).data)
 
-        # while ((first_user_idx == user.id)):
-        #     first_user_idx = get_random_idx(User, 2)
-        while (first_user_idx == second_user_idx):
-            # or (second_user_idx == user.id))
-            second_user_idx = get_random_idx(User, 2)
+        return JsonResponse({'user':UserSerializer(user).data, 'profile':ProfileSerializer(profile).data})
 
-        first_user = User.objects.get(id=first_user_idx)
-        first_profile = Profile.objects.get(user=first_user)
-        # first_playlists = Playlist.objects.filter(created_by=first_user)
-        # first_songs = song_list(first_playlists)
 
-        second_user = User.objects.get(id=second_user_idx)
-        second_profile = Profile.objects.get(user=second_user)
-        # second_playlists = Playlist.objects.filter(created_by=second_user)
+@csrf_exempt
+def get_random_song(request):
 
-        # genre recommendation section
-        # first_genre_idx = get_random_idx(Genre, 1)
-        # second_genre_idx = get_random_idx(Genre, 1)
+    if request.method == 'GET':
+        posts = list(Post.objects.all())
+        try:
+            random_posts = random.sample(posts, 4)
+        except:
+            total = len(posts)
+            random_posts = random.sample(posts, total)
+        songs = []
+        users = []
+        for post in random_posts:
+            songs.append(Song.objects.get(id=post.song.id))
+            users.append(Profile.objects.get(user=post.posted_by))
 
-        # while ((first_genre_idx == second_genre_idx)):
-        #     second_genre_idx = get_random_idx(Genre, 1)
-        
-        # first_genre = Genre.objects.get(id=first_genre_idx)
-        # first_genre= Genre.objects.get(id=second_genre_idx)
-        
-        # # Playlist recommendation section
-        # first_playlist_idx = get_random_idx(Playlist, 1)
-        # second_playlist_idx = get_random_idx(Playlist, 1)
 
-        # while ((first_playlist_idx == second_playlist_idx)):
-        #     second_playlist_idx = get_random_idx(Playlist, 1)
-
-        # first_playlist = Playlist.objects.get(id=first_playlist_idx)
-        # second_playlist = Playlist.objects.get(id=second_playlist_idx)
-
-        return JsonResponse({
-            'first_user': UserSerializer(first_user).data,
-            'first_profile': ProfileSerializer(first_profile).data,
-            'second_user': UserSerializer(second_user).data,
-            'second_profile': ProfileSerializer(second_profile).data,
-            # 'First genre': first_genre.genre,
-            # 'Second genre': first_genre.genre,
-            # 'First_playlist': PlaylistSerializer(first_playlist).data,
-            # 'Second_playlist': PlaylistSerializer(second_playlist).data
-        })
-
-@permission_classes([IsAuthenticated])
-def playlist_list_view(request, nickname):
-    loggedin_user = request.user
-    playlist_owner = Profile.objects.get(nickname=nickname)
-    # if the logged in user == playlist owner, show playlists list include private playlists
-    if loggedin_user == playlist_owner.user:
-        playlists = Playlist.objects.filter(created_by=loggedin_user)
-    #else, show not public playlists only
-    else:
-        playlists = Playlist.objects.filter(created_by=playlist_owner.user, is_private=False)
-    
-    return JsonResponse({'message':f'Playlists curated by {playlist_owner.nickname}.', 'List':PlaylistSerializer(playlists, many=True).data})
-
+        return JsonResponse({'songs':SongSerializer(songs, many=True).data, 'posts': PostSerializer(random_posts, many=True).data, 'users': ProfileSerializer(users, many=True).data})

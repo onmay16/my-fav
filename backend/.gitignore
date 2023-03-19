@@ -5,3 +5,4 @@ __pycache__/
 migrations/
 *.pyc
 curave_db
+.env.dev

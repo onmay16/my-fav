@@ -142,7 +142,7 @@ a {
 }
 
 .fn:hover {
-    text-decoration: underline solid white 3px;
+    text-decoration: underline solid white 2px;
 }
 
 .bio {
@@ -162,15 +162,22 @@ a {
     margin-left: auto;
     width: 83px;
     height: 72px;
-    margin-bottom:50px;
+    margin-bottom:40px;
+}
+
+.profile-btn-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-btn {
     width: 100px;
-    height: 48px;
+    height: 40px;
     font-size: 15px;
     border-radius: 0;
-    border: 2.5px solid #222222;
+    border: 2px solid #222222;
+    background-color: white;
+    cursor: pointer;
 }
 
 .profile-btn:hover {
@@ -178,44 +185,48 @@ a {
     animation: shadow-pop-br 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
 
+.follow-btn:hover {
+    color: #009721;
+}
+
+.following-btn:hover span {
+    display: none;
+}
+
+.following-btn:hover:before {
+    content: "unfollow";
+    color: #C70000;
+}
+
 .message-btn {
-    margin-bottom: 23px;
     margin-top: 10px;
 }
 
 .song-display {
-    width: fit-content;
+    display: flex;
+    width: 1120px;
+    flex-direction: column;
     margin: auto;
 }
 
 .row {
+    margin-right: auto;
     display: flex;
     height: fit-content;
     width: fit-content;
 }
 
 .cover-container {
+    margin: 0;
     height: 280px;
     width: 280px;
     cursor: pointer;
-
-    transition: all .2s;
-}
-
-.cover-container:hover {
-    opacity: 50%;
 }
 
 .cover {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    
-    transition: all 0.2s;
-}
-
-.cover:hover {
-    transform: scale(0.85);
 }
 
 @keyframes page-fade-in {

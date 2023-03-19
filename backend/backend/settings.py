@@ -10,17 +10,21 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+import environ
 
 from pathlib import Path
 # import django_on_heroku
 
 from backend import my_settings
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = os.path.dirname(BASE_DIR)
 
+env = environ.Env()
+environ.Env.read_env(
+    env_file=os.path.join(BASE_DIR, '.env.dev')
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -31,7 +35,7 @@ SECRET_KEY = my_settings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '0.0.0.0']
 
 SITE_ID = 1
 
@@ -75,9 +79,10 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, '../', 'frontend', 'build')
-        ],
+        # 'DIRS': [
+        #     os.path.join(BASE_DIR, '../', 'frontend', 'build')
+        # ],
+        'DIRS': [ os.path.join(BASE_DIR, 'client')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,7 +107,6 @@ DATABASES = {
         'NAME': 'curave_db',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -142,8 +146,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     # Tell Django where to look for React's static files (css, js)
-    os.path.join(BASE_DIR, 'static',),
-    os.path.join(BASE_DIR, '../frontend/build/static'),
+    # os.path.join(BASE_DIR, 'static',),
+    os.path.join(BASE_DIR, './client/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
@@ -174,10 +178,10 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = ['http://localhost:8000', 'http://127.0.0.1:8000']
+CORS_ORIGIN_WHITELIST = ['http://localhost:8000', 'http://127.0.0.1:8000', 'http://127.0.0.1:3000', 'http://localhost:3000',]
 CORS_ALLOW_CREDENTIALS = True
 # CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
+CORS_ALLOWED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000', 'http://127.0.0.1:3000', 'http://localhost:3000',]
 
 # AUTHENTICATION_BACKENDS = [
 #     # Needed to login by username in Django admin, regardless of `allauth`

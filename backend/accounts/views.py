@@ -5,8 +5,10 @@ from django.http import JsonResponse
 from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.csrf import csrf_exempt
 
+from .social import follow
+
 from .models import Follow, User, Profile
-from .serializers import ProfileSerializer, UserSerializer
+from .serializers import FollowSerializer, ProfileSerializer, UserSerializer
 
 from playlist.models import Post, Song
 from playlist.serializers import PostSerializer, SongSerializer
@@ -41,7 +43,7 @@ def signup(request):
         profile.save()
         token = user.auth_token.key
         nickname = profile.nickname
-        authenticateduser = authenticate(request, email=data['email'], password=data['password'])
+        authenticateduser = authenticate(request, email=data['email'], password=data['password1'])
         login(request, authenticateduser)
         
         return JsonResponse({'Token': token, 'message':('Welcome! 🥳 ' + nickname)}, status=200)
@@ -89,8 +91,6 @@ def signout(request):
 @permission_classes([IsAuthenticated])
 def profile(request, nickname):
 
-    # parser_classes = (MultiPartParser, FormParser)
-
     user = request.user
     try:
         profile = Profile.objects.get(nickname=nickname)
@@ -100,8 +100,10 @@ def profile(request, nickname):
 
     if request.method == 'GET':
 
-        following = Follow.objects.select_related().filter(follower=profile.user).count()
-        follower = Follow.objects.select_related().filter(following=profile.user).count()
+        following = Follow.objects.select_related().filter(follower=profile.user)
+        following_count = following.count()
+        follower = Follow.objects.select_related().filter(following=profile.user)
+        follower_count = follower.count()
         user = request.user
         posts = Post.objects.filter(posted_by=profile.user)
         number_of_posts = Post.objects.filter(posted_by=user).count()
@@ -122,8 +124,10 @@ def profile(request, nickname):
             'message':(nickname + "'s profile page"),
             'profile': ProfileSerializer(profile).data,
             'user': UserSerializer(user).data,
-            'following': following,
-            'follower': follower,
+            'following_count':following_count,
+            'following': FollowSerializer(following, many=True).data,
+            'follower_count':follower_count,
+            'follower': FollowSerializer(follower, many=True).data,
             'len':number_of_posts, 
             'posts':PostSerializer(posts, many=True).data,
             'songs':SongSerializer(song_list, many=True).data,
@@ -141,11 +145,6 @@ def profile(request, nickname):
 
         if request.user != profile_user:
             return JsonResponse({'message':'Authorization is needed to edit profile.'})
-        # elif data.is_valid():
-        #     data.save()
-        #     return JsonResponse({'message':'Profile is successfully updated.'})
-        # else:
-        #     return JsonResponse({'message':'Fail to update your profile.'})
 
         else:
             nickname = data.get('nickname', profile.nickname)
@@ -170,4 +169,15 @@ def profile(request, nickname):
             
             profile.save()
             return JsonResponse({'message':'Profile is successfully updated.'})
-            
+
+@csrf_exempt
+@permission_classes([IsAuthenticated])
+def profile_by_id(request):
+    if  request.method == 'POST':
+        data = JSONParser().parse(request)
+        profile_owner = data['profile_owner']
+        id = data['id']
+        owner_profile  = Profile.objects.get(nickname=profile_owner)
+        is_following = Follow.objects.filter(follower=owner_profile.user, following=id).count()
+        follower_profile = Profile.objects.get(user__id=id)
+        return JsonResponse({'data':ProfileSerializer(follower_profile).data, 'is_following':is_following})

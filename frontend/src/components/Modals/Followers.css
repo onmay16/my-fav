@@ -1,0 +1,113 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none
+}
+
+.follower-list-bg {
+    position: fixed;
+    top:0; left: 0; bottom: 0; right: 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.display-block {
+    display: block;
+    animation: fadeIn .2s;
+}
+
+.display-none {
+    display: none;
+    animation: fadeOut .2s;
+}
+
+.entire-follower-modal {
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.follower-modal-header {
+    display: flex;
+    background-color: #222;
+    height: 50px;
+    border-bottom: 2px dashed #222;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.follower-modal-title {
+    margin: auto;
+    color: white;
+    font-size: 18px;
+}
+
+.follower-close-btn {
+    width: 17px;
+    height: 17px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.follower-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px dashed #222;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.follower {
+    display: flex;
+    width: fit-content;
+}
+
+/* .follower-profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-right: 15px;
+} */
+
+/* .follower-nickname, .follower-modal-follow-btn {
+    height: fit-content;
+    margin: auto;
+    margin-right: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.follower-modal-follow-btn {
+    margin-right: 0px;
+    color: #009721;
+}
+
+.follower-nickname:hover, .follower-modal-follow-btn:hover {
+    text-decoration: underline;
+}
+
+.dot {
+    margin-right: 10px;
+} */

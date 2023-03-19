@@ -1,0 +1,6 @@
+.song-display {
+    display: flex;
+    width: 1120px;
+    flex-direction: column;
+    margin: auto;
+}

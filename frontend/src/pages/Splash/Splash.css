@@ -17,6 +17,8 @@ a {
 .entire-splash-page {
     text-align: center;
     height: 100%;
+    background-image: url(../../image/splashBG2.jpeg);
+    object-fit: cover;
 }
 
 .splash-header {
@@ -26,8 +28,8 @@ a {
     width: 100%;
     font-family: Fraunces;
     font-size: 25px;
-    color: white;
-    background-color: #222222;
+    color: #B1B7B2;
+    background-color: #1B1B19;
     position: fixed;
     overflow: hidden;
 }
@@ -58,10 +60,11 @@ a {
 }
 
 .splash-logo {
-    animation: rotation 5s infinite linear;
+    animation: rotation 6s infinite linear;
     margin: auto;
     cursor: pointer;
     width: 450px;
+    fill: white;
 }
 
 @keyframes rotation {

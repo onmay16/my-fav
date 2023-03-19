@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
-import logo from '../../svg/big-logo.svg';
+import logo from '../../svg/big-logo-3d.svg';
 
 import './Splash.css'
 

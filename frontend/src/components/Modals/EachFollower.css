@@ -1,0 +1,39 @@
+.each-follower {
+    margin-bottom: 10px;
+    display: flex;
+    width: fit-content;
+}
+
+.follower-profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.follower-nickname, .follower-modal-follow-btn, .follower-modal-unfollow-btn {
+    height: fit-content;
+    margin: auto;
+    margin-right: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.follower-modal-follow-btn {
+    margin-right: 0px;
+    color: #009721;
+}
+
+.follower-modal-unfollow-btn {
+    margin-right: 0px;
+    color: #970000;
+}
+
+.follower-nickname:hover, .follower-modal-follow-btn:hover, .follower-modal-unfollow-btn:hover {
+    text-decoration: underline;
+}
+
+.dot {
+    margin-right: 10px;
+}

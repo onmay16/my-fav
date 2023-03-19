@@ -1,19 +1,21 @@
-label {
+.start-label {
     font-family: Fraunces;
     letter-spacing: -1px;
     font-size: 19px;
     font-weight: 500;
 }
 
-input {
-    width: 350px;
+.start-input {
+    width: 345px;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
+    border-bottom-style: dotted;
     border-radius: 0%;
     border-color: #222222;
     font-family: 'Open Sans';
-    font-size: 19px;
+    font-size: 17px;
+    margin-top: 10px;
 }
 
 input:focus {outline:none;}
@@ -61,6 +63,11 @@ input:focus {outline:none;}
 
     animation: opacity 1.3s;
     transition: transform .5s;
+}
+
+.curator-login-input-boxes {
+    display: flex;
+    flex-direction: column;
 }
 
 .curator-box:hover {
@@ -135,7 +142,7 @@ input:focus {outline:none;}
     width: 350px;
     height: 50px;
     background-color: #222222;
-    border: 2px solid #222222;
+    border: 1px solid #222222;
     color: white;
     font-family: Fraunces;
     letter-spacing: -1px;
@@ -145,12 +152,35 @@ input:focus {outline:none;}
     justify-content: center;
     margin-bottom: 25px;
     cursor: pointer;
+    padding: 0px;
+}
+
+.curator-login-confirm-btn {
+    display: flex;
+    width: 350px;
+    height: 50px;
+    padding: 0px !important;
+    background-color: #222222;
+    border: 1px solid #222222;
+    color: white;
+    font-family: Fraunces;
+    font-size: 20px;
+    margin-bottom: 25px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .curator-login-email {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding-bottom: 25px;
+}
+
+.curator-login-confirm-btn {
+    padding-left: 20px;
+    padding-top: 100px;
+    cursor: pointer;
 }
 
 .curator-login-google-btn, .new-register-google-btn {
@@ -158,7 +188,7 @@ input:focus {outline:none;}
     width: 350px;
     height: 50px;
     background-color: white;
-    border: 2px solid #222222;
+    border: 1px solid #222222;
     font-family: Fraunces;
     letter-spacing: -1px;
     font-size: 20px;

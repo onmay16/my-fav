@@ -1,9 +1,7 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import './PostDetail.css'
 
-import shortHair from '../../image/shorthair.jpeg'
 import hamster from '../../image/VhamsterV.jpg'
 
 import detailPlus from '../../svg/detail-plus.svg'

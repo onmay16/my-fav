@@ -1,0 +1,137 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none
+}
+
+.following-list-bg {
+    position: fixed;
+    top:0; left: 0; bottom: 0; right: 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.display-block {
+    display: block;
+    animation: fadeIn .2s;
+}
+
+.display-none {
+    display: none;
+    animation: fadeOut .2s;
+}
+
+.entire-following-modal {
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.following-modal-header {
+    display: flex;
+    background-color: #222;
+    height: 50px;
+    border-bottom: 2px dashed #222;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.following-modal-title {
+    margin: auto;
+    color: white;
+    font-size: 18px;
+}
+
+.following-close-btn {
+    width: 17px;
+    height: 17px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.following-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px dashed #222;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.following {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.following-profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-right: 15px;
+}
+
+.following-nickname {
+    height: fit-content;
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.following-modal-follow-btn {
+    margin: auto;
+    width: 100px;
+    height: 35px;
+    border-radius: 15px;
+    background-color: #00761A;
+    margin-right: 0px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    cursor: pointer;
+}
+
+.following-modal-follow-btn:hover span {
+    display: none;
+}
+
+.following-modal-follow-btn:hover {
+    background-color: #A90000;
+}
+
+.following-modal-follow-btn:hover:before {
+    margin: auto;
+    content: "Unfollow";
+}
+
+.following-follow-text {
+    margin: auto;
+}
+
+.following-nickname:hover {
+    text-decoration: underline;
+}
