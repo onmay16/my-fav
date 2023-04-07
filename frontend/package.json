@@ -40,7 +40,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build",
-    "predeploy": "yarn build"
+    "predeploy": "yarn build",
+    "relocate": "react-scripts build && rm -rf ../backend/client && mv -f build ../backend"
   },
   "eslintConfig": {
     "extends": [
