@@ -178,10 +178,10 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = ['http://localhost:8000', 'http://127.0.0.1:8000', 'http://127.0.0.1:3000', 'http://localhost:3000',]
+CORS_ORIGIN_WHITELIST = ['ec2-54-144-19-73.compute-1.amazonaws.com', 'http://localhost:8000', 'http://127.0.0.1:8000', 'http://127.0.0.1:3000', 'http://localhost:3000',]
 CORS_ALLOW_CREDENTIALS = True
 # CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000', 'http://127.0.0.1:3000', 'http://localhost:3000',]
+CORS_ALLOWED_ORIGINS = ['ec2-54-144-19-73.compute-1.amazonaws.com', 'http://localhost:8000', 'http://127.0.0.1:8000', 'http://127.0.0.1:3000', 'http://localhost:3000',]
 
 # AUTHENTICATION_BACKENDS = [
 #     # Needed to login by username in Django admin, regardless of `allauth`
