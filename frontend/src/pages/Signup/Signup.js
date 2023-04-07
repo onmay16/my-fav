@@ -47,7 +47,7 @@ function Signup() {
         event.preventDefault();
 
         axios
-            .post("http://localhost:8000/accounts/signup/", {
+            .post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/signup/", {
                 "email": email,
                 "nickname": nickname,
                 "password1": password,

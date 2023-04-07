@@ -20,7 +20,7 @@ export default function EachFollower(follower, index, profileOwner, isMyProfile,
     };
 
     function follow() {
-        axios.post("http://localhost:8000/accounts/followinmodal/", {
+        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/followinmodal/", {
             'nickname': nickname
         }).then(function (response) {
             setIsFllowing(1);
@@ -31,7 +31,7 @@ export default function EachFollower(follower, index, profileOwner, isMyProfile,
     }
 
     function unfollow() {
-        axios.post("http://localhost:8000/accounts/unfollowinmodal/", {
+        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/unfollowinmodal/", {
             'nickname': nickname
         }).then(function (response) {
             setIsFllowing(0);
@@ -50,7 +50,7 @@ export default function EachFollower(follower, index, profileOwner, isMyProfile,
     }
 
     useEffect(() => {
-        axios.post("http://localhost:8000/accounts/profilebyid/", {
+        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/profilebyid/", {
             'id': follower.follower,
             'profile_owner': profileOwner
         }).then(function (response) {

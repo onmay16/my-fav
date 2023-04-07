@@ -60,7 +60,7 @@ function Profile() {
     const songDisplayList = useRef(null);
 
     function follow() {
-        axios.get("http://localhost:8000/accounts/follow/"+nickname.nickname+"/")
+        axios.get("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/follow/"+nickname.nickname+"/")
         .then(function (response) {
             console.log(response.data)
             setFollower(follower+1)
@@ -69,7 +69,7 @@ function Profile() {
     }
 
     function unfollow() {
-        axios.get("http://localhost:8000/accounts/unfollow/"+nickname.nickname+"/")
+        axios.get("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/unfollow/"+nickname.nickname+"/")
         .then(function (response) {
             console.log(response.data)
             setFollower(follower-1)
@@ -82,14 +82,14 @@ function Profile() {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:8000/playlist/user/")
+        axios.get("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/playlist/user/")
         .then((response) => {
             userHandler(response.data.profile)
         }).catch((error) => {
             console.log(error);
         })
 
-        axios.get("http://localhost:8000/accounts/profile/" + nickname.nickname + "/")
+        axios.get("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/profile/" + nickname.nickname + "/")
         .then((response) => {
             setProfile(response.data.profile);
             setFollower(response.data.follower_count);

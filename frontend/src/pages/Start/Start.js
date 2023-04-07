@@ -21,7 +21,7 @@ function Start() {
     function signInSubmit() {
         var getEmail = document.getElementsByClassName('signin-email-value')[0].value;
         var getPassword = document.getElementsByClassName('signin-pw-value')[0].value;
-        axios.post("http://localhost:8000/accounts/signin/", {
+        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/signin/", {
             "email": getEmail,
             "password": getPassword
         }).then(function (response) {
@@ -43,7 +43,7 @@ function Start() {
         var getNickname = document.getElementsByClassName('signup-nickname-value')[0].value;
         var getPassword = document.getElementsByClassName('signup-pw-value')[0].value;
         var getPasswordConfirm = document.getElementsByClassName('signup-pw2-value')[0].value;
-        axios.post("http://localhost:8000/accounts/signup/", {
+        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/signup/", {
             "email": getEmail,
             "nickname": getNickname,
             "password1": getPassword,

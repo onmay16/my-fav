@@ -33,7 +33,7 @@ function Header() {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:8000/playlist/user/")
+        axios.get("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/playlist/user/")
         .then((response) => {
             userHandler(response.data.profile);
         }).catch((error) => {
@@ -45,7 +45,7 @@ function Header() {
     };
 
     function signOutSubmit() {
-        axios("http://localhost:8000/accounts/signout/")
+        axios("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/signout/")
         .then(function (response) {
             console.log(response);
             if (response.status === 200) {
@@ -65,7 +65,7 @@ function Header() {
                     <img src={notification} alt="" className="noti-icon" onClick={() => setNotiVisible(!notiVisible)} />
                 </div>
                 <img src={message} alt="" className='message' onClick={toMessage}/>
-                <img src={user.profile_pic === null ? userIcon:"http://localhost:8000" + user.profile_pic} alt="" className="profile" onClick={toProfile}/>
+                <img src={user.profile_pic === null ? userIcon:"http://ec2-54-144-19-73.compute-1.amazonaws.com:8080" + user.profile_pic} alt="" className="profile" onClick={toProfile}/>
                 <img src={signout} alt="" className="signout" onClick={signOutSubmit}/>
             </div>
         </header>

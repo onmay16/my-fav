@@ -22,7 +22,7 @@ function Main() {
     };
 
     useEffect(() => {
-        axios.get("http://localhost:8000/playlist/user/")
+        axios.get("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/playlist/user/")
         .then((response) => {
             userHandler(response.data.profile);
         }).catch((error) => {
@@ -30,7 +30,7 @@ function Main() {
         })
 
         // const randomSongs = []
-        axios.get("http://localhost:8000/playlist/main/")
+        axios.get("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/playlist/main/")
         .then((response) => {
             console.log(response);
             setMainSongs(response.data.songs);

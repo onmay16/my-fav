@@ -27,7 +27,7 @@ function Edit() {
         // let currentPic = document.getElementById('profile-pic').files[0].mozFullPath;
         // console.log('current pic path:' + currentPic);
         
-        axios.post("http://localhost:8000/accounts/profile/" + nickname + "/", {
+        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/profile/" + nickname + "/", {
             'nickname': currentNickname,
             'instagram': currentInsta,
             'bio': currentBio

@@ -28,7 +28,7 @@ function AddSong() {
 
     let navigate = useNavigate();
     const toProfile = () => {
-        axios.get("http://localhost:8000/playlist/user/")
+        axios.get("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/playlist/user/")
         .then((response) => {
             console.log(response.data);
             navigate("/"+ response.data.profile.nickname);
@@ -162,7 +162,7 @@ function AddSong() {
     }
 
     function submitPost() {
-        axios.post("http://localhost:8000/playlist/post/", {
+        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/playlist/post/", {
             "track": selectedTitle,
             "artist": selectedArtist,
             "jacket": selectedCover,
