@@ -63,10 +63,10 @@ function Start() {
 
     return (
         <div className="entire-start-page">
-            <div className="to-main" onClick={toMain}>To main page</div>
+            {/* <div className="to-main" onClick={toMain}>To main page</div> */}
             <div className="start-body">
                 <div className="curator-box" onClick={() => setNewVisible(!newVisible)} style={{ display: curatorVisible ? 'flex' : 'none' }}>
-                    <div className="curator">curator</div>
+                    <div className="curator">member</div>
                     <img src={curatorIcon} alt="curator_icon" className="curator-icon" />
                 </div>
                 <span className="new-register" style={{ display: !curatorVisible ? 'flex' : 'none' }}>

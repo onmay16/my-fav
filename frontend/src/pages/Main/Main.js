@@ -47,7 +47,7 @@ function Main() {
             <body className='main-body'>
                 <div className="welcome">Welcome Back,<br />{user.nickname}!</div>
                 <div className="explore-box">
-                    <div className='explore-text'>Explore feeds including these songs ☕</div>
+                    <div className='explore-text'>Explore new songs ☕</div>
                     <div className="songs">
                         {mainSongs.map((song, i) => {
                             const className1 = "song song" + (i+1)

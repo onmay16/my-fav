@@ -16,19 +16,19 @@ const Notification = ({ notiVisible }) => {
             <div className="notification noti1">
                 <img src={heart} alt="" className="heart"/>
                 <div className="content content1">
-                    soo liked your playlist.
+                    soo liked your feed.
                 </div>
             </div>
             <div className="notification noti2">
                 <img src={note} alt="" className="note" />
                 <div className="content content2">
-                    soo curated new playlist.
+                    soo posted new feed.
                 </div>
             </div>
             <div className="notification noti3">
                 <img src={comment} alt="" className="comment" />
                 <div className="content content3">
-                    soo left a comment on your playlist.
+                    soo left a comment.
                 </div>
             </div>
         </div>

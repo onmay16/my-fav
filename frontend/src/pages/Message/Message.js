@@ -19,11 +19,11 @@ function Message() {
                 <div className="message-user-list">
                     <div className="message-user user1">
                         <img src={cuttieCatty} alt="" className="message-user-profile mup1" />
-                        <div className="message-user-id mui1">cuttieCatty</div>
+                        <div className="message-user-id mui1">catsareweird</div>
                     </div>
                     <div className="message-user user2">
                         <img src={imadog} alt="" className="message-user-profile mup2" />
-                        <div className="message-user-id mui2">Imadog</div>
+                        <div className="message-user-id mui2">dogsarethebest</div>
                     </div>
                     <div className="message-user user3">
                         <img src={VhamsterV} alt="" className="message-user-profile mup3" />
@@ -32,10 +32,10 @@ function Message() {
                 </div>
                 <hr className="message-hr" />
                 <div className="chat-window">
-                    <div className="chat chat1">hey there!</div>
-                    <div className="chat chat2">I really like your feed</div>
-                    <div className="chat chat3">Thank you! I love your profile pic :)</div>
-                    <div className="chat chat4">Hehe I know it’s me! 🐹</div>
+                    {/* <div className="chat chat1">hi!</div> */}
+                    <div className="chat chat2">nice feed</div>
+                    <div className="chat chat3">Thank you! nice pic :)</div>
+                    {/* <div className="chat chat4">Hehe I know it’s me! 🐹</div> */}
                 </div>
                 <div className="message-send-section">
                     <input type="text" className="chat-input" placeholder='Type messsage here...'/>

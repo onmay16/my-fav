@@ -16,10 +16,10 @@ function Splash() {
         <div className='entire-splash-page'>
             <header className='splash-header'>
                 <div className='marquee'>
-                    <span className='header-text header-text'>----- curate and share your own playlist. find other’s taste @curave. -----</span>
+                    <span className='header-text header-text'>----- Share your favorite songs @curave. -----</span>
                 </div>
                 <div className='marquee marquee2'>
-                    <span className='header-text header-text2'>----- curate and share your own playlist. find other’s taste @cruave. -----</span>
+                    <span className='header-text header-text2'>----- Share your favorite songs @curave. -----</span>
                 </div>
             </header>
             <body className='splash-body'>
