@@ -19,21 +19,27 @@ function Edit() {
 
     function editSubmit() {
         
+        const formData = new FormData();
         let currentNickname = document.getElementsByClassName('edit-nickname')[0].value;
+        formData.append('nickname', currentNickname);
         let currentInsta = document.getElementsByClassName('edit-insta')[0].value;
+        formData.append('instagram', currentInsta);
         let currentBio = document.getElementsByClassName('edit-bio')[0].value;
+        formData.append('bio', currentBio);
+        const currentPic = document.querySelector('#profile-pic');
+        formData.append('profile_pic', currentPic);
         setNickname(currentNickname);
 
-        // let currentPic = document.getElementById('profile-pic').files[0].mozFullPath;
-        // console.log('current pic path:' + currentPic);
+        console.log(formData)
         
-        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/profile/" + nickname + "/", {
-            'nickname': currentNickname,
-            'instagram': currentInsta,
-            'bio': currentBio
+        axios.post("http://ec2-54-81-90-22.compute-1.amazonaws.com/accounts/profile/" + nickname + "/", {
+        // axios.post("http://localhost:8000/accounts/profile/" + nickname + "/", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
         })
         .then(function (response) {
-            console.log(response);
+            alert(response.data.message);
             toProfile(currentNickname);
         }).catch(function (error) {
             console.log(error);

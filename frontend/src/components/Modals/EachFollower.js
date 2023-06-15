@@ -20,7 +20,8 @@ export default function EachFollower(follower, index, profileOwner, isMyProfile,
     };
 
     function follow() {
-        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/followinmodal/", {
+        axios.post("http://ec2-54-81-90-22.compute-1.amazonaws.com/accounts/followinmodal/", {
+        // axios.post("http://localhost:8000/accounts/followinmodal/", {
             'nickname': nickname
         }).then(function (response) {
             setIsFllowing(1);
@@ -31,7 +32,8 @@ export default function EachFollower(follower, index, profileOwner, isMyProfile,
     }
 
     function unfollow() {
-        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/unfollowinmodal/", {
+        axios.post("http://ec2-54-81-90-22.compute-1.amazonaws.com/accounts/unfollowinmodal/", {
+        // axios.post("http://localhost:8000/accounts/unfollowinmodal/", {
             'nickname': nickname
         }).then(function (response) {
             setIsFllowing(0);
@@ -50,7 +52,8 @@ export default function EachFollower(follower, index, profileOwner, isMyProfile,
     }
 
     useEffect(() => {
-        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/accounts/profilebyid/", {
+        axios.post("http://ec2-54-81-90-22.compute-1.amazonaws.com/accounts/profilebyid/", {
+        // axios.post("http://localhost:8000/accounts/profilebyid/", {
             'id': follower.follower,
             'profile_owner': profileOwner
         }).then(function (response) {

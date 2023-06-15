@@ -26,7 +26,8 @@ const PostDetail = (props) => {
 
     function postEdit() {
     
-        axios.post("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/playlist/" + postId + "/edit/", {
+        axios.post("http://ec2-54-81-90-22.compute-1.amazonaws.com/playlist/" + postId + "/edit/", {
+        // axios.post("http://localhost:8000/playlist/" + postId + "/edit/", {
 
         })
     }
@@ -35,7 +36,8 @@ const PostDetail = (props) => {
 
         if (window.confirm("Are you sure you want to delete this post?") == true) {
             
-            axios.get("http://ec2-54-144-19-73.compute-1.amazonaws.com:8080/playlist/post/" + postId + "/delete/")
+            axios.get("http://ec2-54-81-90-22.compute-1.amazonaws.com/playlist/post/" + postId + "/delete/")
+            // axios.get("http://localhost:8000/playlist/post/" + postId + "/delete/")
             .then(function (response) {
                 // console.log(response);
                 alert(response.data.message);
